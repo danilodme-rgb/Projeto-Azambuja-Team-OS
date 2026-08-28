@@ -92,6 +92,9 @@ Sugestão de condução: apresentar a minuta em 20 minutos, e usar o resto do te
 
 ## Bloco 9 — Escopo do MVP *(10 min)*
 
+- [ ] **Lançar como PWA (instalável pelo navegador) ou já publicar nas lojas?**
+      *(PWA economiza US$ 99/ano da Apple, elimina a espera por revisão e não gera retrabalho —
+      o mesmo código vira app de loja depois)*
 - [ ] Revisar a lista da Fase 1 item a item: **entra / não entra**
 - [ ] Definir a data-alvo de lançamento
 - [ ] Definir quantos alunos entram no piloto (sugestão: 5 a 10, com desconto de fundador)

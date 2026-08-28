@@ -40,7 +40,9 @@ O que torna a plataforma diferenciada:
    cobrança automática e renovação.
 
 **Prazo estimado do MVP:** 10 a 14 semanas após o congelamento do escopo.
-**Custo operacional estimado:** R$ 350 a R$ 700 por mês no início (detalhamento na seção 13).
+**Custo operacional estimado:** R$ 3 a R$ 15 por mês no início, lançando como aplicativo
+instalável pelo navegador (PWA); cerca de R$ 190/mês quando o volume justificar backup
+gerenciado e publicação nas lojas. Detalhamento e ressalvas na seção 15.
 
 ---
 
@@ -574,7 +576,7 @@ escolher uma arquitetura que evite os três erros que afundam projetos deste tip
 | **E-mail transacional** | Resend ou Amazon SES | Entregabilidade e registro de envio |
 | **Push** | Expo Push Notifications | Nativo do ecossistema, custo zero |
 | **Relatório PDF** | Geração no servidor | PDF idêntico para todo mundo, com a marca do coach |
-| **Hospedagem web** | Vercel | Deploy automático, HTTPS, CDN global |
+| **Hospedagem web** | Cloudflare Pages | Deploy automático, HTTPS, CDN global, banda ilimitada e **uso comercial permitido no plano gratuito** (o plano gratuito da Vercel proíbe uso comercial) |
 | **Erros e monitoramento** | Sentry | Descobrir o problema antes do aluno reclamar |
 | **Organização do código** | Monorepo (Turborepo) | App, site e regras compartilhadas no mesmo repositório, sem duplicação |
 
@@ -671,10 +673,13 @@ O suficiente para o coach **operar e faturar de verdade**:
 - Agenda e link da call semanal
 - Notificações push essenciais
 - Painel do coach
-- Publicação nas lojas (App Store e Google Play)
+- **Rotina própria de backup diário** (obrigatória: o plano gratuito do banco não faz backup)
+- Lançamento como **PWA** — aplicativo instalável pela tela de início, sem taxa de loja e sem
+  espera por revisão. Publicação na App Store e no Google Play fica para a Fase 2 (ver 15.4)
 
 ### Fase 2 — Consolidação *(4 a 6 semanas)*
-Técnicas avançadas (conforme a decisão do coach) · Relatórios comparativos e agregados ·
+**Publicação na App Store e no Google Play** · Técnicas avançadas (conforme a decisão do
+coach) · Relatórios comparativos e agregados ·
 Chat em tempo real · Programa de indicação ("indique e ganhe") · Metas e conquistas ·
 Integração com Apple Health / Google Fit (passos, peso da balança inteligente) ·
 Exportações para o coach.
@@ -687,34 +692,114 @@ Aplicativo de coach dedicado · Nota fiscal automática · Área de comunidade.
 
 ## 15. Custos estimados
 
-### 15.1 Custo mensal de operação (fase inicial, até ~200 alunos)
+> **Correção em relação à primeira estimativa.** A versão inicial deste documento orçava
+> R$ 290 a R$ 400 por mês. Isso estava conservador demais para a fase inicial: dois itens
+> daquela lista não são necessários no começo. **O custo real para começar fica entre R$ 5 e
+> R$ 15 por mês.** O detalhamento abaixo mostra por quê e quando cada custo passa a existir.
 
-| Item | Estimativa/mês |
+### 15.1 Nível 0 — Validação (do lançamento até ~50 alunos)
+
+| Item | Serviço | Custo/mês |
+|---|---|---|
+| Banco de dados, login e arquivos | Supabase Free — 500 MB de banco, 1 GB de arquivos, 50 mil usuários/mês | **R$ 0** |
+| Hospedagem do site e do painel | Cloudflare Pages Free — banda ilimitada e **uso comercial permitido** | **R$ 0** |
+| E-mail transacional | Resend Free — 3.000 e-mails/mês | **R$ 0** |
+| E-mail profissional no domínio | Zoho Mail Free, ou redirecionamento do próprio domínio | **R$ 0** |
+| Backup diário | Rotina própria para Cloudflare R2 (10 GB gratuitos) | **R$ 0** |
+| Monitoramento de erros | Sentry Free | **R$ 0** |
+| Videochamada | Google Meet gratuito — chamadas 1 a 1 sem limite prático de tempo | **R$ 0** |
+| Domínio `.com.br` | Registro.br, ~R$ 40/ano | **~R$ 3** |
+| **Total** | | **~R$ 3 a R$ 15** |
+
+**O que eu errei na primeira estimativa:**
+
+- **Vercel Pro (R$ 110/mês) — desnecessário.** O plano gratuito da Vercel **proíbe uso
+  comercial**, o que forçaria o plano pago no dia em que o primeiro Pix entrasse. O
+  Cloudflare Pages faz o mesmo trabalho, com banda ilimitada, e **permite uso comercial no
+  plano gratuito**. Trocando o fornecedor, o custo some.
+- **Google Workspace (R$ 35/mês) — desnecessário.** Era para o e-mail profissional e para
+  o Meet. O Zoho Mail gratuito resolve o e-mail no domínio próprio, e o Google Meet gratuito
+  já permite chamadas de 1 a 1 sem o limite de 60 minutos (que só se aplica a reuniões com
+  três ou mais pessoas). Como a call é sempre coach + aluno, o plano pago não acrescenta nada.
+
+**Ressalvas honestas do Nível 0 — o que se paga por usar o gratuito:**
+
+1. **O Supabase gratuito não faz backup automático.** Como tratamos dado sensível, isso não é
+   aceitável como está: a rotina própria de backup diário (para o Cloudflare R2 gratuito) passa
+   a ser **item obrigatório do MVP**, não opcional. É trabalho de desenvolvimento, não custo
+   mensal.
+2. **Projeto gratuito é pausado após 7 dias sem nenhum acesso ao banco.** Irrelevante com
+   alunos ativos usando o app todo dia; relevante apenas na janela entre terminar o
+   desenvolvimento e entrar o primeiro aluno — resolvido com uma chamada automática diária.
+3. **1 GB de fotos** comporta cerca de 2.500 imagens comprimidas — algo como 60 a 80 alunos
+   no primeiro ano, com avaliação trimestral. Quando encher, as fotos migram para o
+   Cloudflare R2 (10 GB gratuitos, depois cerca de US$ 0,015 por GB) ou sobe-se de plano.
+4. Sem suporte por e-mail dos fornecedores. Na prática, irrelevante nessa escala.
+
+### 15.2 Nível 1 — Operação (quando o faturamento justificar)
+
+| Item | Custo/mês |
 |---|---|
-| Banco de dados, autenticação e armazenamento (Supabase Pro) | ~R$ 140 |
-| Hospedagem web (Vercel Pro) | ~R$ 110 |
-| E-mail transacional | R$ 0 a R$ 110 |
-| E-mail profissional (Google Workspace, 1 conta) | ~R$ 35 |
-| Domínio | ~R$ 5 (≈R$ 60/ano) |
-| Monitoramento de erros (Sentry — plano gratuito no início) | R$ 0 |
-| Videochamada (Google Meet incluso no Workspace) | R$ 0 |
-| **Subtotal fixo** | **~R$ 290 a R$ 400** |
-| Taxas de pagamento | ~1% (Pix) a ~4% (cartão parcelado) sobre o faturamento |
+| Supabase Pro — backup diário gerenciado com 7 dias de retenção, sem pausa, 8 GB de banco, 100 GB de arquivos, suporte | ~R$ 140 |
+| Demais itens | continuam gratuitos |
+| Domínio | ~R$ 3 |
+| **Total** | **~R$ 145** |
 
-### 15.2 Custos únicos / anuais
+**Gatilho para subir de nível:** quando o faturamento passar de aproximadamente R$ 1.500/mês,
+ou quando os limites de armazenamento apertarem. Backup gerenciado por fornecedor, com dado
+de saúde de dezenas de pessoas, vale os R$ 140 — mas não no primeiro mês, com três alunos.
+
+### 15.3 O custo que não desaparece: as lojas de aplicativos
 
 | Item | Valor |
 |---|---|
-| Conta de desenvolvedor Apple | US$ 99/ano |
-| Conta de desenvolvedor Google Play | US$ 25 (uma vez) |
-| Builds nas lojas (Expo EAS) | R$ 0 a ~US$ 99/mês, conforme frequência |
-| Revisão jurídica dos documentos (advogado) | A orçar |
-| Identidade visual / design da marca | A orçar, se ainda não existir |
+| Apple Developer Program | **US$ 99 por ano** (~R$ 540/ano, ou ~R$ 45/mês) — obrigatório para publicar na App Store |
+| Google Play Console | **US$ 25, pagamento único** |
 
-**Leitura de negócio:** com o custo fixo em torno de R$ 300 a R$ 400 por mês, **3 a 4 alunos
-pagantes já cobrem toda a infraestrutura.** Do quinto aluno em diante, é margem.
+Esse é, de longe, o maior custo recorrente do Nível 0 — a taxa da Apple sozinha custa mais do
+que toda a infraestrutura. **E existe uma forma legítima de adiá-la.**
 
----
+### 15.4 A alternativa que corta o maior custo: começar como PWA
+
+Um **PWA** (aplicativo web instalável) é um site que o aluno adiciona à tela de início do
+celular e que passa a se comportar como aplicativo: ícone próprio, tela cheia, sem barra de
+navegador, funcionamento offline e notificações push.
+
+| | PWA | Aplicativo nas lojas |
+|---|---|---|
+| Taxa da Apple | **R$ 0** | US$ 99/ano |
+| Taxa do Google | **R$ 0** | US$ 25 |
+| Revisão da loja | **não existe** | dias de espera, com risco de rejeição |
+| Correção de bug | **no ar em minutos** | nova submissão e nova revisão |
+| Instalação | pelo link, "Adicionar à tela de início" | busca na loja |
+| Funciona offline | sim | sim |
+| Notificação push | sim (no iOS, após instalar na tela de início) | sim |
+| Integração com Apple Health / Google Fit | não | sim |
+| Percepção de credibilidade | menor | maior |
+
+**Recomendação: lançar como PWA e publicar nas lojas na Fase 2**, quando o faturamento
+justificar a taxa da Apple e houver alunos suficientes para as integrações fazerem diferença.
+
+O ponto decisivo é que **isso não é retrabalho**: a stack escolhida (React Native com Expo)
+gera também a versão web a partir do mesmo código. Publicar nas lojas depois é empacotar o que
+já existe, não reescrever.
+
+### 15.5 Resumo
+
+| Cenário | Custo mensal |
+|---|---|
+| **Começo, como PWA** | **R$ 3 a R$ 15** |
+| Começo, publicando nas lojas | ~R$ 50 (a taxa da Apple diluída) |
+| Em operação, com backup gerenciado e nas lojas | ~R$ 190 |
+| Estimativa anterior deste documento *(superestimada)* | ~~R$ 290 a R$ 400~~ |
+
+Somam-se as **taxas de pagamento**, que só incidem sobre o que ele efetivamente receber:
+cerca de 1% no Pix e até 4% no cartão parcelado. Esse é o único custo que cresce junto com o
+faturamento — e é o custo que realmente importa no longo prazo.
+
+**Leitura de negócio:** começando como PWA, **um único aluno pagante cobre a infraestrutura do
+ano inteiro.** O custo relevante do projeto não é a operação: é o desenvolvimento inicial e,
+depois, as taxas sobre o faturamento.
 
 ## 16. Riscos e mitigações
 
@@ -750,7 +835,9 @@ Lista resumida — a versão detalhada, pronta para conduzir a reunião, está n
 11. **Marca:** nome, logo, cores, domínio.
 12. **Periodicidade** de fotos e medidas de acompanhamento.
 13. **Retenção de dados:** por quanto tempo guardar fotos após o fim do contrato.
-14. **O que entra e o que fica de fora do MVP.**
+14. **Lançar como PWA ou já publicar nas lojas?** *(recomendação: PWA primeiro — economiza
+    US$ 99/ano da Apple, elimina a espera por revisão e não gera retrabalho)*
+15. **O que entra e o que fica de fora do MVP.**
 
 ---
 
