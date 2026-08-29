@@ -7,6 +7,11 @@ para os alunos + site institucional/captação + painel administrativo para o co
 > Nenhum código de produção foi escrito ainda: a construção começa depois da reunião de
 > definição (ver `docs/anexo-c-checklist-reuniao.md`).
 
+## Como trabalhamos
+
+[`CLAUDE.md`](CLAUDE.md) na raiz reúne as instruções de trabalho e é lido automaticamente
+no início de toda sessão neste repositório. É o arquivo a copiar para um projeto novo.
+
 ## Documentos
 
 | Arquivo | Conteúdo |
