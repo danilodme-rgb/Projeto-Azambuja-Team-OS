@@ -148,6 +148,13 @@ Sugestão de condução: apresentar a minuta em 20 minutos, e usar o resto do te
 - [ ] Confirmar a **fila de espera**: quando lotar, o botão vira "entrar na fila"
 - [ ] Prazo que o primeiro da fila tem para confirmar antes de a vez passar
 - [ ] `B10` Treino não executado no dia: fica pendente ou vence? *(recomendação: pendente)*
+- [ ] Confirmar o **check-in de chegada** ("Cheguei"): ele quer ver isso na ficha do aluno?
+- [ ] `B12` Check-in **manual ou por GPS**? *(recomendação: manual — GPS traz dado de
+      localização e exigência de conformidade sem necessidade)*
+
+- [ ] `B13` Depois de quantas horas a sessão fecha sozinha? *(recomendação: 4h)*
+- [ ] `B14` Sem check-in há quantos dias dispara alerta de abandono? *(recomendação: 7)*
+- [ ] Ele quer a opção **"publicar ao final da sessão"** quando o aluno estiver treinando?
 - [ ] `B11` **Pausa do aluno** (férias, viagem, lesão): quantas por ano, por quanto tempo?
 - [ ] **Modo ausência do coach**: quando ele viaja ou adoece, suspende o prazo de resposta e
       pausa inscrições — ele concorda?

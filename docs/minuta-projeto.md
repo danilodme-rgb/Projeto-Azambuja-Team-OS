@@ -38,8 +38,8 @@ O que torna a plataforma diferenciada:
    substitutos equivalentes**: se o aparelho não existe ali ou está ocupado, o aluno troca sem
    sair do protocolo e sem esperar resposta.
 
-4. **Execução medida, não declarada.** O aluno registra carga série a série e adesão
-   alimentar refeição a refeição. Isso vira, sem trabalho manual, um relatório profissional
+4. **Execução medida, não declarada.** Check-in de chegada na academia, carga série a série e
+   adesão alimentar refeição a refeição. Isso vira, sem trabalho manual, um relatório profissional
    de evolução (composição corporal, adesão, progressão de carga).
 
 5. **Ritual semanal.** Videochamada de 30 minutos com relatório na tela. O acompanhamento
@@ -338,13 +338,15 @@ insubstituível, ele dispensa a exigência com justificativa registrada.
 
 ### 4.5 Tela do aluno — execução do treino
 
-Exatamente como descrito no briefing:
+Exatamente como descrito no briefing, com o check-in de chegada à frente:
 
-1. Aluno abre **Treino** → vê a lista de **menus por grupo muscular** (Peito, Costas,
+1. Ao chegar na academia, o aluno toca em **"Cheguei"** — o check-in (ver 4.6).
+
+2. Abre **Treino** → vê a lista de **menus por grupo muscular** (Peito, Costas,
    Pernas...), conforme o treino do dia.
 
-2. Abre o grupo → vê os **exercícios** daquele grupo.
-3. Abre o exercício → vê:
+3. Abre o grupo → vê os **exercícios** daquele grupo.
+4. Abre o exercício → vê:
    - **Séries prescritas** (ex.: 4 x 8-10, descanso 90s)
    - **Descrição de execução** escrita pelo coach
    - **Vídeo** (thumbnail clicável que abre o player)
@@ -358,19 +360,53 @@ Exatamente como descrito no briefing:
 
    - Cronômetro de descanso
    - Campo de observação livre ("senti dor no ombro na terceira série")
-4. Se não tiver o aparelho do titular, abre as opções substitutas (ver 4.4) e registra qual
+5. Se não tiver o aparelho do titular, abre as opções substitutas (ver 4.4) e registra qual
    executou.
 
-5. Se sentir dor, marca o exercício e informa a intensidade em uma **escala de 0 a 10** — isso
+6. Se sentir dor, marca o exercício e informa a intensidade em uma **escala de 0 a 10** — isso
    dispara alerta imediato ao coach (ver 6.5), sem esperar a call da semana.
 
-6. Ao terminar, marca **"Treino concluído"** → gera o registro da sessão.
+7. Ao terminar, marca **"Treino concluído"** → gera o registro da sessão.
 
 **Recurso de retenção:** o app funciona **offline** durante o treino (a academia costuma ter
 sinal ruim) e sincroniza quando a conexão voltar. Isso é um diferencial prático enorme e
 raramente bem resolvido pelos concorrentes.
 
-### 4.6 Técnicas avançadas — ponto em aberto
+### 4.6 Check-in de chegada na academia
+
+Um único toque em **"Cheguei"**, na tela inicial, quando o aluno chega para treinar. Nasceu
+como forma de evitar o conflito de sincronização (14.3), mas entrega bem mais do que isso.
+
+**Para o coach.** O check-in **não gera notificação** — aparece apenas quando ele abre a ficha
+do aluno: *"Está treinando agora · check-in às 18h22."* Assim ele não é interrompido, e ao
+mesmo tempo sabe o que está acontecendo no momento em que vai prescrever.
+
+**O ganho principal, que não é o conflito:**
+
+| O que passa a existir | Por que importa |
+|---|---|
+| **Frequência real de ida à academia** | Hoje só se sabe de quem registra carga. Com o check-in, o aluno que foi treinar mas não anotou nada continua aparecendo como presente |
+| **Horário habitual de treino** | Os lembretes se ajustam sozinhos ao horário real dele, em vez do horário que ele declarou meses atrás |
+| **Duração da sessão** (check-in até "treino concluído") | Sessão de 40 minutos e sessão de 1h30 dizem coisas diferentes sobre execução e intensidade |
+| **Alerta de abandono mais cedo** | Sem check-in há X dias, o coach é avisado antes de o aluno sumir de vez |
+| **Pré-carregamento** | No check-in, o app baixa o treino do dia por inteiro, garantindo que tudo funcione mesmo se o sinal cair no meio |
+
+**Três ajustes necessários:**
+
+1. **Manual, sem GPS.** Confirmar presença por localização parece elegante e é uma péssima
+   troca: passaria a coletar **dado de geolocalização**, que é dado pessoal, aumentando a
+   superfície de conformidade e a exigência de consentimento — tudo isso para resolver algo que
+   um toque já resolve. **Recomendação: botão manual, sem qualquer acesso à localização.**
+
+2. **Fechamento automático.** O aluno vai esquecer de encerrar. A sessão fecha sozinha ao ele
+   marcar "treino concluído" ou após um limite de horas, o que vier primeiro — senão o coach vê
+   "treinando agora" às três da manhã.
+
+3. **Opcional, nunca obrigatório.** Quem esquecer o check-in registra o treino normalmente. O
+   check-in enriquece o dado; não pode ser porta de entrada para treinar. E check-in sem treino
+   registrado **não conta como adesão** — mostra que ele foi, não que executou.
+
+### 4.7 Técnicas avançadas — ponto em aberto
 
 O briefing registra corretamente que **as técnicas avançadas mudam a forma de montar o treino**
 e que só se trabalha nisso depois da decisão do coach. Isso está preservado.
@@ -608,6 +644,9 @@ Gerado automaticamente e exportável em **PDF com a identidade visual do coach**
   levantamento terra) e volume total por grupo muscular
 
 - **Adesão ao treino:** treinos realizados / prescritos, por semana
+- **Frequência de ida à academia** (check-ins) e **duração média das sessões** — mostra também
+  quem foi treinar sem registrar carga
+
 - **Adesão à dieta:** percentual, média de calorias e macros realizados × prescritos
 - Execução das técnicas avançadas (o que ele conseguiu ou não)
 - **Evolução da dor** (escala 0 a 10) ao lado da evolução de carga, para quem tem lesão
@@ -741,7 +780,9 @@ Tudo em uma única interface web (e também acessível pelo celular):
 
 Push (celular) e e-mail, todas configuráveis pelo coach e pelo aluno:
 
-- Lembrete de treino no horário que o aluno escolheu
+- Lembrete de treino no horário que o aluno escolheu — ajustado automaticamente ao horário
+  em que ele costuma fazer check-in
+
 - Lembrete de registrar as refeições
 - "Seu protocolo novo chegou"
 - "O Azambuja respondeu você"
@@ -751,7 +792,7 @@ Push (celular) e e-mail, todas configuráveis pelo coach e pelo aluno:
 - Vaga aberta, para quem está na fila de espera
 - Aviso de modo ausência do coach
 - Para o coach: nova solicitação, **ficha aguardando contato prévio**, **dor relatada no
-  treino**, **revisão de restrição vencida**, mensagem próxima do prazo, aluno sumido,
+  treino**, **aluno sem check-in há X dias**, **revisão de restrição vencida**, mensagem próxima do prazo, aluno sumido,
   pagamento falhou
 
 ---
@@ -1047,6 +1088,22 @@ Este é o bug clássico de aplicativo de treino, e precisa de regra definida ant
 código. O cenário: o aluno registra o treino sem sinal na academia e, nesse meio-tempo, o coach
 publica um protocolo novo.
 
+**Primeira barreira: evitar o conflito antes de ele nascer.** O **check-in de chegada** (4.6)
+mostra ao coach, na ficha do aluno e no momento em que ele vai publicar, que aquele aluno está
+treinando agora. Ao clicar em publicar, aparece:
+
+> ⚠️ *Este aluno fez check-in há 25 minutos e provavelmente está treinando neste momento.*
+> **Publicar agora** · **Publicar ao final da sessão dele**
+
+A segunda opção resolve o caso por completo: o protocolo novo passa a valer quando a sessão
+atual terminar, e o aluno nunca vê o treino mudar embaixo dele.
+
+**Por que isso não basta sozinho.** O check-in precisa de sinal para chegar ao servidor — e o
+problema todo nasce justamente da falta de sinal na academia. Se o aluno fez check-in em casa e
+perdeu a conexão no caminho, ou se a academia é subsolo, o coach não vê nada. Por isso o
+check-in **reduz muito a frequência** do conflito, mas a regra abaixo continua sendo a rede de
+segurança, e é ela que garante que nada se perde.
+
 **A regra:**
 
 1. **O que o aluno executou nunca é sobrescrito.** Registro de execução é fato acontecido: entra
@@ -1137,6 +1194,7 @@ Tabelas principais previstas — serve para dimensionar o trabalho, e será refi
 | `workout_templates` / `workout_template_items` | Modelos de treino por objetivo |
 | `workout_plans` / `workout_days` / `workout_exercises` | Treino prescrito ao aluno |
 | `workout_exercise_options` | Titular e substitutos de cada exercício prescrito, em ordem |
+| `gym_checkins` | Check-in de chegada, encerramento e duração da sessão |
 | `workout_sessions` / `set_logs` | Execução: **qual variação foi feita**, carga e repetições por série, RIR, técnica |
 | `advanced_techniques` | Catálogo de técnicas (após decisão do coach) |
 | `foods` | Base TACO/TBCA/IBGE + alimentos do coach, com tags |
@@ -1169,6 +1227,9 @@ O suficiente para o coach **operar e faturar de verdade**:
 - Formulário de inscrição completo, com fotos e consentimentos LGPD
 - Fila de solicitações e aprovação pelo coach
 - **Controle de vagas e fila de espera**
+- **Check-in de chegada na academia**, com aviso ao coach no momento de publicar e opção de
+  publicar ao final da sessão
+
 - Banco de exercícios (pré-carregado + editável) e banco de alimentos (TACO/TBCA/IBGE)
 - Montagem de treino do zero + modelos
 - Montagem de dieta com 3+ opções por refeição
@@ -1340,6 +1401,7 @@ depois, as taxas sobre o faturamento.
 | Vazamento de fotos corporais | **Crítico** — dano de imagem e responsabilização legal | Bucket privado, URL assinada de curta duração, sem EXIF, marca d'água, log de auditoria, retenção limitada, 2FA no acesso do coach |
 | Ferramenta de monitoramento capturar dado sensível no log | **Alto** — vazamento por onde ninguém olha | Filtro antes do envio, gravação de sessão desligada, identificação só por código interno, retenção curta (13.5) |
 | Bug chegar ao aluno sem forma de voltar atrás | **Alto** — perda de confiança logo no início | Homologação obrigatória, testes automatizados, verificação antes de publicar e rollback em minutos (14.2) |
+| Coach publicar protocolo com o aluno treinando | Médio — o treino muda embaixo do aluno | Check-in avisa no momento de publicar, com opção de publicar ao final da sessão (4.6) |
 | Registro de treino perdido na sincronização offline | **Alto** — o aluno perde o trabalho e desiste do app | Regra escrita de conflito: execução nunca é sobrescrita, protocolo é versionado (14.3) |
 | Demanda maior que a capacidade do coach | **Alto** — prazo estourado e má primeira impressão | Vagas limitadas e fila de espera (3.6), com modo ausência |
 | Taxa de loja ao começar a cobrar | Médio a alto — até 30% da receita | Avaliar antes de publicar nas lojas; o PWA elimina o problema (9.1) |
@@ -1358,7 +1420,7 @@ depois, as taxas sobre o faturamento.
 
 ## 19. Registro de decisões
 
-São **25 decisões** e **2 já fechadas**. Estão separadas por **quando cada uma precisa estar
+São **28 decisões** e **2 já fechadas**. Estão separadas por **quando cada uma precisa estar
 resolvida** — não por assunto. Uma decisão do Bloco A tomada tarde para o desenvolvimento
 inteiro; uma do Bloco C tomada tarde atrasa só o lançamento.
 
@@ -1457,6 +1519,9 @@ entram aos poucos pelo fluxo normal?
 | **B9** | Quantas vagas ele aceita simultaneamente? | Começar baixo (10 a 15) e subir conforme sentir o ritmo — é mais fácil abrir vaga do que se desculpar por atraso |
 | **B10** | Treino não executado no dia: fica pendente ou vence? | Fica pendente, com a data real registrada e a diferença visível no relatório |
 | **B11** | Pausa do aluno: quantas por ano e por quanto tempo? | Livre no início, com registro de motivo. Regra rígida só se virar problema |
+| **B12** | Check-in: botão manual ou confirmação por GPS? | **Manual, sem GPS.** Localização é dado pessoal e aumenta a exigência de conformidade para resolver algo que um toque já resolve |
+| **B13** | Depois de quantas horas a sessão de check-in fecha sozinha? | 4 horas, ou ao marcar "treino concluído" — o que vier primeiro |
+| **B14** | Sem check-in há quantos dias dispara alerta de abandono? | 7 dias para quem treina 3x ou mais por semana |
 
 ---
 
@@ -1480,7 +1545,7 @@ entram aos poucos pelo fluxo normal?
 | Bloco | Quantas | Quando | Consequência de não decidir |
 |---|---|---|---|
 | **A — Travam o início** | 8 | **Na reunião** | O desenvolvimento não começa, ou começa com risco alto de retrabalho |
-| **B — Metade do MVP** | 11 | Até a semana 6 | Módulos específicos ficam parados |
+| **B — Metade do MVP** | 14 | Até a semana 6 | Módulos específicos ficam parados |
 | **C — Lançamento** | 6 | Até a semana 10 | O produto fica pronto mas não pode ser publicado |
 
 > A pauta operacional, bloco a bloco e com os itens de apoio de cada decisão, está no
