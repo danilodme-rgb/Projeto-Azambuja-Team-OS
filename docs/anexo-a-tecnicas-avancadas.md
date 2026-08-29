@@ -63,11 +63,14 @@ _______________________________________________________________
 
 1. As técnicas são prescritas **por exercício**, **por série específica** (ex.: só na última),
    ou **por bloco de treino**?
+
 2. O aluno precisa apenas marcar **"consegui / não consegui"**, ou precisa registrar os
    números de cada sub-série (ex.: as três cargas de um drop-set)?
+
 3. O coach quer ver, no relatório, **a evolução da execução das técnicas** ao longo das semanas?
 4. Técnicas avançadas ficam **liberadas só para nível intermediário/avançado** automaticamente,
    ou o coach decide caso a caso?
+
 5. Alguma técnica deve ser **bloqueada automaticamente** para alunos com determinada restrição
    (por exemplo, oclusão para hipertensos)?
 

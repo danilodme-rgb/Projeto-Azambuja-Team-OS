@@ -137,12 +137,14 @@ técnico e os avisos legais devem ser preservados.
 evolução e contato direto com o Azambuja.
 
 **Como funciona:**
+
 1. Você preenche sua avaliação — objetivo, restrições, rotina e fotos.
 2. O Azambuja analisa pessoalmente e monta seu treino e sua dieta.
 3. Você executa pelo app e registra suas cargas e refeições.
 4. Toda semana, videochamada de 30 minutos com o seu relatório de evolução na tela.
 
 **Diferenciais:**
+
 - Treino e dieta **individuais** — nada de planilha genérica
 - **Suas restrições respeitadas** desde o primeiro dia: alimentares e de lesões
 - **Vídeo e descrição de execução** em cada exercício

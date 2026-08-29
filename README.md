@@ -14,11 +14,15 @@ para os alunos + site institucional/captação + painel administrativo para o co
 | [`docs/minuta-projeto.md`](docs/minuta-projeto.md) | Documento principal: visão, escopo, fluxos, arquitetura, LGPD, custos, cronograma |
 | [`docs/anexo-a-tecnicas-avancadas.md`](docs/anexo-a-tecnicas-avancadas.md) | Catálogo de técnicas avançadas de treino — **a definir com o coach** |
 | [`docs/anexo-b-textos-app.md`](docs/anexo-b-textos-app.md) | Textos prontos: definições de nível, objetivos, consentimentos LGPD |
-| [`docs/anexo-c-checklist-reuniao.md`](docs/anexo-c-checklist-reuniao.md) | Pauta objetiva da reunião de definição (todas as decisões pendentes) |
+| [`docs/anexo-c-checklist-reuniao.md`](docs/anexo-c-checklist-reuniao.md) | Pauta objetiva da reunião, com os códigos das decisões (`A1`, `B3`, `C5`…) |
+| [`Minuta-Azambuja-Team-OS.pdf`](Minuta-Azambuja-Team-OS.pdf) | **Versão para apresentação** — minuta + os três anexos, 45 páginas, com capa e sumário |
+
+Para regerar o PDF depois de editar os documentos: `python3 tools/build_pdf.py`
 
 ## Próximos passos
 
 1. Revisar a minuta e ajustar o que for necessário.
 2. Reunião com o coach usando o Anexo C como pauta.
-3. Congelar o escopo do MVP.
-4. Iniciar o desenvolvimento (Fase 1).
+3. Fechar as **7 decisões do Bloco A** (seção 18.2 da minuta) — são as que travam o início.
+4. Congelar o escopo do MVP.
+5. Iniciar o desenvolvimento (Fase 1).
