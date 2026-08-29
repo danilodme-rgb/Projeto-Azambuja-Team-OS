@@ -89,6 +89,10 @@ Neste tipo de projeto (saúde, corpo, imagem, dado de menor):
 | PDF para apresentar | `Minuta-Azambuja-Team-OS.pdf` | Quando o Danilo pedir, ou antes de reunião |
 
 - Gerar o PDF: `python3 tools/build_pdf.py`
+- **Nunca regerar o PDF nem republicar o artefato por conta própria.** Ao terminar uma
+  mudança na documentação, **perguntar ao Danilo** se ele quer os dois atualizados,
+  dizendo o que mudou — dependendo do ajuste, não há necessidade, e regerar custa
+  contexto à toa. Gerar só quando ele pedir.
 - Branch de trabalho: `claude/nutrition-fitness-app-rpp1x8`
 - Commit em português, descritivo, explicando **o porquê** e não só o quê.
 - **Nunca** citar nome de modelo de IA em commit, PR ou arquivo do repositório.
@@ -100,7 +104,7 @@ Este arquivo é lido em toda sessão — então ele é curto de propósito. Deta
 `docs/`, que só é lido quando necessário.
 
 - Não reenviar arquivo inteiro quando só uma parte mudou.
-- Não regerar artefato e PDF a cada ajuste pequeno: acumular e gerar uma vez.
+- Não regerar artefato e PDF por iniciativa própria: perguntar antes (ver seção 8).
 - Não reler arquivo que já foi lido nesta sessão.
 - Ler o trecho de que se precisa, não o arquivo inteiro.
 

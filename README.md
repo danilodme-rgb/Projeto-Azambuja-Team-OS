@@ -20,7 +20,7 @@ no início de toda sessão neste repositório. É o arquivo a copiar para um pro
 | [`docs/anexo-a-tecnicas-avancadas.md`](docs/anexo-a-tecnicas-avancadas.md) | Catálogo de técnicas avançadas de treino — **a definir com o coach** |
 | [`docs/anexo-b-textos-app.md`](docs/anexo-b-textos-app.md) | Textos prontos: definições de nível, objetivos, consentimentos LGPD |
 | [`docs/anexo-c-checklist-reuniao.md`](docs/anexo-c-checklist-reuniao.md) | Pauta objetiva da reunião, com os códigos das decisões (`A1`, `B3`, `C5`…) |
-| [`Minuta-Azambuja-Team-OS.pdf`](Minuta-Azambuja-Team-OS.pdf) | **Versão para apresentação** — minuta + os três anexos, 51 páginas, com capa e sumário |
+| [`Minuta-Azambuja-Team-OS.pdf`](Minuta-Azambuja-Team-OS.pdf) | **Versão para apresentação** — minuta + os três anexos, 53 páginas, com capa e sumário |
 
 Para regerar o PDF depois de editar os documentos: `python3 tools/build_pdf.py`
 
