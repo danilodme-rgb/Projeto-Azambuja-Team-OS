@@ -69,8 +69,10 @@ Sugestão de condução: apresentar a minuta em 20 minutos, e usar o resto do te
 - [ ] Qual nível de dor (0 a 10) dispara alerta imediato para ele?
 - [ ] Exige liberação médica de quem marcou lesão? Em quais casos?
 - [ ] Aceita upload de laudo/exame? *(é dado sensível — aumenta a exigência de proteção)*
-- [ ] Revisão vencida deve bloquear a renovação automática do treino?
-      *(recomendação: sim, sem nunca bloquear o acesso do aluno ao treino atual)*
+- [x] ~~Revisão vencida deve bloquear a renovação automática do treino?~~ **DECIDIDO:** trava
+      apenas a renovação automática por modelo. O coach continua podendo publicar manualmente
+      com registro, e o aluno **nunca** perde o acesso ao treino atual. *(Não precisa ser
+      rediscutido na reunião — levar apenas para ciência do coach.)*
 - [ ] Quem pode encerrar uma restrição: só ele, ou o aluno também pode declarar alta?
 
 ## Bloco 4C — Titular e substitutos *(10 min)*
