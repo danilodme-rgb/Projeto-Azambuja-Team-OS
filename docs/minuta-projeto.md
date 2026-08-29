@@ -766,7 +766,10 @@ mandar e-mail.
 
 - Princípio do menor privilégio; segredos e chaves fora do código-fonte.
 - Backups automáticos diários com restauração testada.
-- Log de auditoria de todas as ações administrativas.
+- Log de auditoria de todas as ações administrativas, com retenção própria e separada dos
+  logs de erro.
+- **Logs de erro sem nenhum dado pessoal ou de saúde** — filtro obrigatório antes do envio,
+  gravação de sessão desligada, retenção de 30 a 90 dias (detalhamento na seção 13.5).
 - Rate limiting e proteção contra abuso nos formulários públicos.
 - Dados hospedados preferencialmente **em região brasileira** (São Paulo), reduzindo latência
   e simplificando a conformidade.
@@ -863,6 +866,76 @@ azambuja-team-os/
 
 ---
 
+### 13.5 Observabilidade — o que acontece quando o app trava
+
+Sim, tudo o que quebra gera registro. Isso não é detalhe técnico: sem log, um problema só é
+descoberto quando um aluno reclama — e a maioria não reclama, simplesmente para de usar.
+
+**Três tipos de registro, com finalidades diferentes:**
+
+| Tipo | O que registra | Para quem |
+|---|---|---|
+| **Erro e travamento** | Crash do app, tela branca, botão que não responde, erro de rede | Para quem mantém o sistema |
+| **Erro de servidor** | Falha ao gerar relatório, webhook de pagamento que não chegou, e-mail que não saiu | Para quem mantém o sistema |
+| **Auditoria** | Quem acessou qual foto, quais ações administrativas foram feitas | Para o coach e para conformidade com a LGPD (seção 12.2) |
+
+Os dois primeiros são operacionais e têm vida curta. O terceiro é registro legal, tem outra
+retenção e **nunca** é apagado junto com os demais.
+
+**O que fica registrado em um travamento**
+
+Tela em que o aluno estava, ação que ele executou, versão do app, modelo do aparelho, versão do
+sistema operacional, e o ponto exato do código onde quebrou. Erros idênticos são agrupados
+automaticamente: em vez de 40 avisos soltos, aparece *"este erro ocorreu 40 vezes, com 12
+alunos, desde a versão 1.4"* — o que já indica se é um caso isolado ou algo que precisa de
+correção urgente.
+
+**Travamento sem internet também é registrado.** O registro fica guardado no aparelho e sobe
+quando a conexão voltar. Isso importa porque boa parte do uso acontece dentro da academia, com
+sinal ruim — exatamente onde os problemas aparecem.
+
+**O que o aluno vê**
+
+Nunca uma tela técnica. Vê uma mensagem clara — *"Não conseguimos salvar seu treino agora. Seus
+dados estão guardados no aparelho e serão enviados assim que a conexão voltar."* — com um botão
+opcional de "contar o que aconteceu" e um **código curto de referência** que ele pode repassar
+ao coach.
+
+**O que o coach vê**
+
+Log técnico não é problema dele. No painel aparece apenas o que exige ação: *"3 alunos
+relataram erro ao registrar treino hoje"*. O destinatário do log é quem mantém o sistema, que
+recebe **alerta imediato** por e-mail quando surge um erro novo ou quando um erro conhecido
+dispara em volume. Log que ninguém lê no momento certo é arqueologia, não monitoramento.
+
+**Meta objetiva:** manter **acima de 99,5% de sessões sem travamento**. É uma métrica medida
+automaticamente e serve de critério de qualidade a cada nova versão.
+
+> ### ⚠️ O log não pode virar um vazamento
+>
+> Ferramentas de monitoramento capturam, por padrão, muito mais do que deveriam: conteúdo de
+> formulário, corpo das requisições, e — no recurso de "gravação de sessão" — **a própria tela
+> do aluno**. Em um aplicativo que trata peso, medidas, laudos e fotos de sunga e biquíni, isso
+> transformaria a ferramenta de erro na maior porta de vazamento do sistema.
+>
+> Por isso, as regras abaixo são obrigatórias no projeto:
+>
+> - **Filtro antes do envio:** nenhum conteúdo de formulário, corpo de requisição, token,
+>   documento ou imagem sai do aparelho junto com o erro.
+> - **Nenhum dado de saúde no log.** Peso, medidas, restrições, laudos e dor ficam fora.
+> - **Identificação só por código interno** do aluno — nunca nome, e-mail ou telefone.
+> - **Gravação de sessão e captura de tela desligadas.** É o recurso mais tentador e o único que
+>   conseguiria capturar uma foto corporal.
+> - **Retenção curta:** 30 a 90 dias para log de erro, contra a retenção longa da auditoria.
+> - A ferramenta de monitoramento é uma **operadora de dados** e precisa constar no contrato e
+>   no registro de operações de tratamento (ROPA), como qualquer outro fornecedor.
+
+**Ferramenta e custo.** A recomendação é **Sentry**, cujo plano gratuito (5 mil erros por mês)
+atende com folga a fase inicial — já está contemplado no Nível 0 de custos, a R$ 0. Se o coach
+preferir que **nenhum dado saia para fornecedor externo**, existe a alternativa de hospedar a
+ferramenta na própria infraestrutura (Sentry self-hosted ou GlitchTip): elimina o terceiro, mas
+acrescenta trabalho de operação e algum custo de servidor. **A decidir — item `B8`.**
+
 ## 14. Modelo de dados (visão inicial)
 
 Tabelas principais previstas — serve para dimensionar o trabalho, e será refinada:
@@ -931,6 +1004,7 @@ O suficiente para o coach **operar e faturar de verdade**:
 - Canal "Fale com o Azambuja" com a regra das 18h
 - Agenda e link da call semanal
 - Notificações push essenciais
+- Monitoramento de erros e travamentos, com filtro de dados pessoais e alerta imediato
 - Painel do coach
 - **Rotina própria de backup diário** (obrigatória: o plano gratuito do banco não faz backup)
 - Lançamento como **PWA** — aplicativo instalável pela tela de início, sem taxa de loja e sem
@@ -1070,6 +1144,7 @@ depois, as taxas sobre o faturamento.
 | Risco | Impacto | Como mitigamos |
 |---|---|---|
 | Vazamento de fotos corporais | **Crítico** — dano de imagem e responsabilização legal | Bucket privado, URL assinada de curta duração, sem EXIF, marca d'água, log de auditoria, retenção limitada, 2FA no acesso do coach |
+| Ferramenta de monitoramento capturar dado sensível no log | **Alto** — vazamento por onde ninguém olha | Filtro antes do envio, gravação de sessão desligada, identificação só por código interno, retenção curta (13.5) |
 | Escopo crescer sem controle | Atraso e estouro de custo | Escopo do MVP congelado por escrito; novidades vão para a Fase 2 |
 | Baixa adesão do aluno ao registro diário | Relatórios vazios, produto perde valor | Registro em 1 toque, funcionamento offline, lembretes, comparativo de carga visível, gráfico imediato |
 | Vídeo do YouTube removido pelo criador | Aluno vê link quebrado | Verificação automática de links + plano de gravar vídeos próprios |
@@ -1085,7 +1160,7 @@ depois, as taxas sobre o faturamento.
 
 ## 18. Registro de decisões
 
-São **20 decisões** e **1 já fechada**. Estão separadas por **quando cada uma precisa estar
+São **21 decisões** e **1 já fechada**. Estão separadas por **quando cada uma precisa estar
 resolvida** — não por assunto. Uma decisão do Bloco A tomada tarde para o desenvolvimento
 inteiro; uma do Bloco C tomada tarde atrasa só o lançamento.
 
@@ -1170,6 +1245,7 @@ educação física?
 | **B5** | Periodicidade de fotos e medidas de acompanhamento | Medidas quinzenais, fotos mensais |
 | **B6** | Gateway de pagamento | Comparar taxas de Asaas, Mercado Pago, Pagar.me e Stripe com o contador |
 | **B7** | Aceita alunos menores de 18 anos? | Se sim, exige consentimento do responsável e muda o fluxo de cadastro |
+| **B8** | Monitoramento de erros: ferramenta externa (Sentry) ou hospedada por nós? | Sentry gratuito, com o filtro de dados da seção 13.5. Self-hosted só se ele exigir que nada saia |
 
 ---
 
@@ -1193,7 +1269,7 @@ educação física?
 | Bloco | Quantas | Quando | Consequência de não decidir |
 |---|---|---|---|
 | **A — Travam o início** | 7 | **Na reunião** | O desenvolvimento não começa, ou começa com risco alto de retrabalho |
-| **B — Metade do MVP** | 7 | Até a semana 6 | Módulos específicos ficam parados |
+| **B — Metade do MVP** | 8 | Até a semana 6 | Módulos específicos ficam parados |
 | **C — Lançamento** | 6 | Até a semana 10 | O produto fica pronto mas não pode ser publicado |
 
 > A pauta operacional, bloco a bloco e com os itens de apoio de cada decisão, está no

@@ -129,6 +129,9 @@ Sugestão de condução: apresentar a minuta em 20 minutos, e usar o resto do te
 
 - [ ] `C4` Por quanto tempo guardar fotos e dados após o fim do contrato (sugestão: 12 meses)
 - [ ] `C6` Quem será o **Encarregado de dados (DPO)** e qual e-mail publicar
+- [ ] `B8` **Monitoramento de erros:** ferramenta externa (Sentry, gratuita) ou hospedada por
+      nós? *(externa, com filtro de dados; self-hosted só se ele exigir que nada saia)*
+- [ ] Ele concorda com a **retenção de 30 a 90 dias** para logs de erro?
 - [ ] Ele tem advogado para revisar os documentos? Se não, providenciar
 - [ ] Ele concorda com o 2FA obrigatório na conta dele?
 
