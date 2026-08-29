@@ -152,3 +152,104 @@ evolução e contato direto com o Azambuja.
 - Funciona **offline** na academia
 
 **Botão:** QUERO SER ALUNO
+
+---
+
+## 9. Pergunta de lesão no cadastro
+
+> **Você possui alguma lesão, dor recorrente ou limitação de movimento?**
+>
+> Responda com sinceridade, mesmo que seja algo antigo ou que você considere "pouca coisa".
+> Essa informação muda diretamente os exercícios que o Azambuja vai prescrever para você — e é
+> o que evita que um treino piore um problema que já existe.
+>
+> ☐ Não, nenhuma
+> ☐ Sim
+>
+> *(se marcar sim)*
+>
+> **Vamos entender melhor.**
+> - Qual região? *(ombro, joelho, lombar, cervical, punho, quadril, tornozelo, outra)*
+> - O que aconteceu, e há quanto tempo?
+> - Você está em tratamento? Com qual profissional?
+> - **De 0 a 10, qual é a sua dor hoje?** *(0 = nenhuma dor, 10 = a pior dor que já sentiu)*
+> - Você tem liberação médica para treinar? *(Sim / Não / Não sei)*
+> - Tem algum movimento que você já sabe que não consegue fazer?
+> - Se tiver laudo, exame ou atestado, pode anexar aqui *(opcional)*
+>
+> Seus documentos de saúde recebem a mesma proteção das suas fotos: área privada, acesso
+> registrado e exclusão a qualquer momento.
+
+---
+
+## 10. Aviso de contato antes da prescrição
+
+> **O Azambuja vai falar com você antes de montar seu treino.**
+>
+> Como você relatou uma lesão, ele não vai prescrever nada sem antes conversar com você e
+> entender o seu caso. É assim que se evita um treino que piore o problema.
+>
+> Escolha um horário abaixo, ou aguarde: ele entra em contato dentro do prazo de resposta.
+
+---
+
+## 11. Tela de revisão periódica
+
+*(aparece somente para alunos com lesão ou restrição declarada)*
+
+> **Revisão da sua {REGIÃO} — leva menos de um minuto**
+>
+> Combinamos revisar isso a cada {PRAZO}. Como está agora?
+>
+> **Comparando com a última revisão:**
+> ☐ Melhorou  ☐ Está igual  ☐ Piorou
+>
+> **De 0 a 10, qual é a sua dor hoje?**
+> `0 ──────────────── 10`
+>
+> **Mudou alguma coisa no tratamento?** *(alta médica, nova sessão de fisioterapia, novo exame,
+> mudança de medicação, nada mudou)*
+>
+> **Tem algum laudo ou exame novo para anexar?** *(opcional)*
+>
+> **Quer comentar mais alguma coisa?**
+>
+> [ENVIAR REVISÃO]
+
+*Se o aluno marcar "piorou" ou dor acima do limite definido pelo coach:*
+
+> Obrigado por avisar. **O Azambuja foi notificado agora** e vai entrar em contato com você.
+> Enquanto isso, não force o movimento que está doendo.
+
+---
+
+## 12. Substituição de exercício (tela do aluno)
+
+> **Não tem esse aparelho na sua academia?**
+>
+> Sem problema. O Azambuja já deixou duas alternativas equivalentes para este exercício.
+> Escolha a que você consegue fazer hoje — cada uma tem o vídeo e a descrição de execução.
+>
+> **1. {TITULAR}** — a primeira escolha do Azambuja
+> **2. {SUBSTITUTO A}**
+> **3. {SUBSTITUTO B}**
+>
+> Marque qual você executou. Seu histórico de carga é acompanhado separadamente para cada uma,
+> porque as cargas não são comparáveis entre elas.
+
+---
+
+## 13. Registro de dor durante o treino
+
+> **Sentiu dor neste exercício?**
+>
+> ☐ Sim, senti dor
+>
+> *(se marcar)*
+> **De 0 a 10, qual foi a intensidade?**
+> **Em que região?**
+> **Foi durante o movimento, depois, ou os dois?**
+>
+> ⚠️ **Se a dor for forte, pare o exercício agora.** O Azambuja será avisado imediatamente e
+> vai falar com você — você não precisa esperar a call da semana. Em caso de dor aguda,
+> procure atendimento médico.

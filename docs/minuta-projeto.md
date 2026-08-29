@@ -24,25 +24,29 @@ prateleira com a marca dele por cima. A tese do produto é simples:
 
 O que torna a plataforma diferenciada:
 
-1. **Onboarding com triagem inteligente.** O aluno declara restrições alimentares e
-   articulares/lesões uma única vez; o sistema cruza automaticamente essas restrições com o
-   banco de exercícios e de alimentos e entrega ao coach a prescrição **já sinalizada** —
-   ele nunca prescreve às cegas algo que o aluno não pode fazer ou comer.
+1. **Triagem inteligente e viva.** O aluno declara restrições alimentares e lesões; o sistema
+   cruza automaticamente com o banco de exercícios e de alimentos e entrega ao coach a
+   prescrição **já sinalizada** — ele nunca prescreve às cegas. Quem declara lesão só recebe
+   treino **depois** de falar com o coach, e a restrição é **revisada em prazo acordado**, para
+   que o alerta nunca se apoie em informação vencida.
 2. **Prescrição híbrida.** O coach pode montar tudo do zero **ou** partir de modelos
    próprios por objetivo, editando o que quiser. O sistema aprende com os modelos dele, não
    com um algoritmo genérico.
-3. **Execução medida, não declarada.** O aluno registra carga série a série e adesão
+3. **Plano que funciona em qualquer academia.** Cada exercício tem um titular e **dois
+   substitutos equivalentes**: se o aparelho não existe ali ou está ocupado, o aluno troca sem
+   sair do protocolo e sem esperar resposta.
+4. **Execução medida, não declarada.** O aluno registra carga série a série e adesão
    alimentar refeição a refeição. Isso vira, sem trabalho manual, um relatório profissional
    de evolução (composição corporal, adesão, progressão de carga).
-4. **Ritual semanal.** Videochamada de 30 minutos com relatório na tela. O acompanhamento
+5. **Ritual semanal.** Videochamada de 30 minutos com relatório na tela. O acompanhamento
    deixa de ser "manda no WhatsApp" e vira consultoria com evidência.
-5. **Recorrência de receita.** Planos mensal, trimestral, semestral e anual, com Pix e cartão,
+6. **Recorrência de receita.** Planos mensal, trimestral, semestral e anual, com Pix e cartão,
    cobrança automática e renovação.
 
 **Prazo estimado do MVP:** 10 a 14 semanas após o congelamento do escopo.
 **Custo operacional estimado:** R$ 3 a R$ 15 por mês no início, lançando como aplicativo
 instalável pelo navegador (PWA); cerca de R$ 190/mês quando o volume justificar backup
-gerenciado e publicação nas lojas. Detalhamento e ressalvas na seção 15.
+gerenciado e publicação nas lojas. Detalhamento e ressalvas na seção 16.
 
 ---
 
@@ -75,7 +79,7 @@ Ao clicar, abre uma **página de apresentação (landing page)** com:
 - Vídeo ou foto de abertura + frase de posicionamento
 - Os diferenciais do método (blocos curtos, com ícone)
 - Como funciona, em 4 passos
-- Resultados de alunos (fotos antes/depois **somente com autorização escrita** — ver seção 11)
+- Resultados de alunos (fotos antes/depois **somente com autorização escrita** — ver seção 12)
 - Planos e preços
 - Perguntas frequentes
 - **Botão principal: "QUERO SER ALUNO"** (repetido no topo, no meio e no fim da página)
@@ -101,7 +105,7 @@ coxa — opcionais no cadastro, obrigatórias no acompanhamento).
 Foto de sunga (homens) / biquíni (mulheres), nos três ângulos padrão: **frente, lado e
 costas**. A tela explica em linguagem simples por que a foto é necessária, quem vê, por
 quanto tempo fica guardada e como pedir a exclusão. Só avança com o **aceite explícito e
-registrado** do termo de consentimento específico para foto corporal (seção 11).
+registrado** do termo de consentimento específico para foto corporal (seção 12).
 
 **Etapa 4 — Nível de experiência**
 Iniciante · Intermediário · Avançado — com a definição de cada um exibida logo abaixo da
@@ -117,9 +121,12 @@ Vegetariano (com subtipos) · Vegano · Celíaco / sem glúten · Intolerante à
 Alergias (amendoim, frutos do mar, ovo, soja, castanhas...) · Outras (campo livre).
 
 **Etapa 7 — Restrições de exercício e saúde**
-Lesões e limitações por região (ombro, joelho, lombar, cervical, punho, quadril, tornozelo),
-cirurgias, hérnia de disco, hipertensão, diabetes, gestação, uso de medicamentos, exercícios
-que já sabe que não consegue executar (campo livre).
+Abre com a pergunta que muda o fluxo: **"Você possui alguma lesão, dor recorrente ou limitação
+de movimento?"** — Sim / Não. Quem responde **sim** detalha região, histórico, dor de 0 a 10,
+tratamento em curso, liberação médica e laudo opcional, e tem a ficha marcada com **contato
+prévio obrigatório** (todo o fluxo está na seção 6). Em seguida, para todos: cirurgias, hérnia
+de disco, hipertensão, diabetes, gestação, uso de medicamentos e exercícios que já sabe que não
+consegue executar.
 
 **Etapa 8 — Rotina**
 Dias e horários disponíveis para treinar, local de treino (academia completa / academia
@@ -133,18 +140,25 @@ AZAMBUJA"**.
 
 ### 3.3 Confirmação e SLA
 
+Quem declarou lesão vê, já nessa tela, o aviso de que **o Azambuja falará com ele antes de
+montar o treino**, e pode escolher um horário na agenda ali mesmo.
+
 Assim que envia, o aluno vê uma tela de confirmação com o **prazo de resposta do coach**
 (parâmetro configurável — sugestão: até 2 dias úteis) e recebe o mesmo prazo por e-mail e
 por WhatsApp. Se o prazo estourar, o sistema avisa o coach automaticamente.
 
 ### 3.4 Aprovação, pagamento e liberação
 
-1. O coach analisa a ficha na fila de solicitações.
+1. O coach analisa a ficha na fila de solicitações. Fichas com lesão declarada vêm com
+   **selo vermelho de contato obrigatório**.
 2. Aprova (ou recusa com justificativa, ou pede complemento de informação).
 3. Aprovado → o aluno recebe o link de pagamento com os planos disponíveis.
 4. Pagamento confirmado → conta criada, acesso ao app liberado, coach notificado para montar
    o protocolo.
-5. Coach publica treino + dieta → aluno é notificado ("Seu protocolo chegou!").
+5. **Se houver lesão declarada:** o coach faz o contato prévio e registra a conversa, a
+   conduta e o prazo de revisão acordado. O sistema não libera a publicação do treino antes
+   disso (seção 6.3).
+6. Coach publica treino + dieta → aluno é notificado ("Seu protocolo chegou!").
 
 ### 3.5 Uso diário
 
@@ -175,6 +189,7 @@ Banco proprietário, editável só pelo coach. Cada exercício tem:
 | **Vídeo demonstrativo** | Link de vídeo público do YouTube (preferência: Leandro Twin) — ver 4.2 |
 | Nível recomendado | Iniciante / intermediário / avançado |
 | Unilateral? | Sim/não (afeta o registro de carga) |
+| **Grupo de equivalência** | Exercícios que substituem este quando falta equipamento (ver 4.4) |
 | Observações internas | Só o coach vê |
 
 **Carga inicial de dados:** entregamos o banco pré-carregado com um catálogo base de
@@ -226,7 +241,50 @@ tela: *"⚠️ Este aluno declarou lesão no ombro. Este exercício está marcad
 para ombro."* — o coach pode prosseguir mesmo assim (ele é a autoridade técnica), mas a
 decisão fica **registrada em log**, o que também o protege juridicamente.
 
-### 4.4 Tela do aluno — execução do treino
+### 4.4 Titular e substitutos — três opções para cada exercício
+
+Para cada exercício prescrito, o coach define **no mínimo três opções**, em ordem:
+
+1. **Titular** — o exercício que ele quer que o aluno faça.
+2. **Substituto A** e **Substituto B** — equivalentes, para quando a academia não tem o
+   equipamento, o aparelho está ocupado ou está quebrado.
+
+Isso resolve um problema diário e real: o aluno chega na academia, aquela máquina não existe
+ali, e ele improvisa sozinho (saindo do plano) ou simplesmente pula o exercício. Com titular e
+substitutos, **o protocolo continua válido em qualquer academia**, sem o aluno ter que
+adivinhar nem esperar resposta do coach.
+
+**Para o aluno:** o titular aparece em destaque. Abaixo, o botão *"Não tenho esse aparelho"*
+abre as duas alternativas, cada uma com seu próprio vídeo e descrição. Ele marca qual executou
+e o registro guarda a variação — não apenas "fez peito", mas *o que* fez.
+
+**Três implicações que precisam ser tratadas, ou a regra vira um peso:**
+
+1. **O trabalho de montagem triplicaria.** Exigir três opções por exercício, digitadas uma a
+   uma, tornaria a prescrição insustentável. A solução é criar **grupos de equivalência** no
+   banco de exercícios: o coach cadastra **uma vez** que supino reto com barra, supino com
+   halteres e supino na máquina são equivalentes. Ao montar, ele escolhe o titular e o sistema
+   já sugere os dois substitutos, que ele confirma ou troca em um clique. **Sem isso, a regra
+   não se sustenta na prática** — por isso o grupo de equivalência entra como item do MVP.
+2. **A progressão de carga passa a ser por variação.** Não se compara carga de supino com
+   barra e de supino na máquina — seriam duas curvas misturadas num gráfico sem sentido. O
+   relatório passa a mostrar a progressão **por variação executada** e, junto, o
+   **percentual de sessões feitas no titular**. Se o aluno faz sempre o substituto, o coach
+   descobre e provavelmente troca o titular — informação que hoje ele não teria.
+3. **O alerta de restrição roda nas três opções.** De nada adianta o titular ser seguro se o
+   substituto B agride o ombro lesionado. A verificação de contraindicação vale para titular e
+   substitutos, igualmente.
+
+**Validação ao publicar:** o sistema exige as três opções. Se o coach considerar um exercício
+insubstituível, ele dispensa a exigência com justificativa registrada.
+
+> **Melhoria sugerida — inventário da academia do aluno.** No cadastro o aluno já informa onde
+> treina. Vale deixá-lo marcar **quais equipamentos a academia dele tem** (lista curta, com
+> foto). Com isso, o app ordena as opções mostrando primeiro o que ele consegue executar, e o
+> coach vê, no momento da prescrição, se o titular sequer existe naquela academia. Custo baixo
+> de implementação, ganho alto de aderência. **A decidir.**
+
+### 4.5 Tela do aluno — execução do treino
 
 Exatamente como descrito no briefing:
 
@@ -245,13 +303,17 @@ Exatamente como descrito no briefing:
      anterior — o aluno vê na hora se está progredindo
    - Cronômetro de descanso
    - Campo de observação livre ("senti dor no ombro na terceira série")
-4. Ao terminar, marca **"Treino concluído"** → gera o registro da sessão.
+4. Se não tiver o aparelho do titular, abre as opções substitutas (ver 4.4) e registra qual
+   executou.
+5. Se sentir dor, marca o exercício e informa a intensidade em uma **escala de 0 a 10** — isso
+   dispara alerta imediato ao coach (ver 6.5), sem esperar a call da semana.
+6. Ao terminar, marca **"Treino concluído"** → gera o registro da sessão.
 
 **Recurso de retenção:** o app funciona **offline** durante o treino (a academia costuma ter
 sinal ruim) e sincroniza quando a conexão voltar. Isso é um diferencial prático enorme e
 raramente bem resolvido pelos concorrentes.
 
-### 4.5 Técnicas avançadas — ponto em aberto
+### 4.6 Técnicas avançadas — ponto em aberto
 
 O briefing registra corretamente que **as técnicas avançadas mudam a forma de montar o treino**
 e que só se trabalha nisso depois da decisão do coach. Isso está preservado.
@@ -333,9 +395,129 @@ suplementação e observações.
 
 ---
 
-## 6. Módulo de evolução e relatórios
+## 6. Gestão de restrições e lesões
 
-### 6.1 O que o aluno registra periodicamente
+### 6.1 Por que isto é um módulo, e não um campo de cadastro
+
+Restrição não é dado estático. Um ombro lesionado melhora, um exame de intolerância muda o
+diagnóstico, uma gestação começa e termina, uma dor nova aparece. Se o sistema tratar a
+restrição como algo preenchido uma única vez na inscrição, em três meses o coach estará
+prescrevendo com base em informação vencida — e o alerta automático, que é um dos principais
+diferenciais do produto, perde o valor.
+
+Por isso restrição passa a ter **ciclo de vida**: é declarada, gera contato, é revisada em
+prazo acordado, muda de status e pode ser encerrada.
+
+### 6.2 No cadastro: a pergunta que muda o fluxo
+
+Na etapa de restrições, uma pergunta objetiva:
+
+> **"Você possui alguma lesão, dor recorrente ou limitação de movimento?"** — Sim / Não
+
+- **Não** → segue o fluxo normal de inscrição.
+- **Sim** → abre o detalhamento e a ficha é marcada com **contato prévio obrigatório**.
+
+O detalhamento pedido a quem marcou "sim":
+
+| Campo | Para quê |
+|---|---|
+| Região afetada | Cruza com as tags de contraindicação do banco de exercícios |
+| O que aconteceu e quando | Contexto clínico para o coach |
+| Está em tratamento? Com qual profissional? | Define se há conduta externa a respeitar |
+| **Dor atual, de 0 a 10** | Linha de base para medir evolução |
+| Tem liberação médica para treinar? | Sim / Não / Não sei — define se o coach exige antes de prescrever |
+| Movimentos que já sabe que não consegue | Entrada direta para o alerta automático |
+| Laudo, exame ou atestado | Upload **opcional** |
+
+O laudo é dado de saúde e recebe **o mesmo tratamento reforçado das fotos corporais**:
+área privada, link temporário, auditoria de acesso e retenção definida (seção 12).
+
+A mesma lógica vale para restrições alimentares clínicas: celíaco, alergia diagnosticada ou
+intolerância confirmada abrem campo para data do diagnóstico e exame, porque também precisarão
+de revisão.
+
+### 6.3 Contato obrigatório antes de montar o treino
+
+Quem declarou lesão **não recebe treino antes de falar com o coach**. Isso não é uma sugestão
+do sistema, é uma trava:
+
+1. A ficha entra na fila de solicitações com **selo vermelho: "Contato obrigatório antes da
+   prescrição"**, com o resumo da lesão visível já na listagem.
+2. O sistema **impede a publicação do treino** enquanto o contato não for registrado.
+3. Ao registrar, o coach preenche: data, canal (videochamada, telefone, áudio), resumo do que
+   foi apurado, **conduta definida** e a **periodicidade de revisão acordada com o aluno**.
+4. Se ele julgar o contato dispensável em um caso específico, dispensa com justificativa — e a
+   dispensa fica registrada em log.
+
+O aluno é avisado no momento certo: *"O Azambuja vai falar com você antes de montar seu treino,
+porque você relatou uma lesão."* — e já pode escolher um horário na agenda dele, o que elimina
+o vai-e-vem de mensagens.
+
+> **Isso protege o coach.** Fica documentado que houve avaliação individual antes de prescrever
+> exercício a um aluno lesionado. Em uma eventual discussão sobre responsabilidade
+> profissional, esse registro é exatamente o que se pede.
+
+### 6.4 Revisão periódica — prazo acordado, conforme tipo e gravidade
+
+No registro do contato, coach e aluno **acordam o prazo de revisão**. Os prazos são definidos
+pelo coach; a tabela abaixo serve apenas como ponto de partida para a discussão:
+
+| Situação | Revisão sugerida |
+|---|---|
+| Lesão aguda, em tratamento ou pós-operatório | 15 dias |
+| Lesão em recuperação, dor moderada | 30 dias |
+| Limitação crônica estável (ex.: desgaste antigo de joelho) | 60 a 90 dias |
+| Restrição alimentar clínica (celíaco, alergia, intolerância) | 6 meses, ou a cada novo exame |
+| Preferência alimentar (vegetariano, vegano) | 6 a 12 meses |
+
+**Somente alunos com restrição entram nesse ciclo.** Quem não declarou nada nunca vê essa tela,
+nunca recebe esse lembrete e não tem trabalho adicional nenhum.
+
+Como funciona na prática:
+
+- **Semáforo no painel do coach:** verde (revisada em dia), amarelo (vence em até 7 dias),
+  vermelho (vencida). Ele bate o olho e sabe quem precisa de atenção.
+- **Lembrete automático** para os dois, antes do vencimento.
+- **Tela de revisão curta**, que o aluno responde em menos de um minuto: melhorou / igual /
+  piorou, dor atual de 0 a 10, mudou algo no tratamento, novo laudo se houver.
+- **Piora dispara alerta imediato** ao coach, com sugestão de antecipar o contato — não espera
+  o vencimento nem a call da semana.
+- **Enquanto a revisão está vencida**, o sistema bloqueia a *renovação automática por modelo* e
+  exige a revisão antes. O coach continua podendo publicar manualmente, com registro. O aluno
+  **não** perde acesso ao treino atual: ele continua treinando normalmente; o que trava é
+  prescrever protocolo novo com dado velho.
+- Cada revisão vira registro no histórico do aluno e alimenta o **gráfico de dor** no relatório
+  de evolução — que passa a mostrar, lado a lado, evolução de carga e evolução da dor.
+
+### 6.5 Dor relatada no treino fecha o ciclo
+
+O campo de observação por exercício ganha uma **escala de dor de 0 a 10** e um marcador
+"senti dor". Quando o aluno marca:
+
+1. **Alerta imediato ao coach**, sem esperar a call.
+2. O exercício fica sinalizado na ficha daquele aluno.
+3. Se a dor é na região de uma restrição já declarada → o sistema sugere **antecipar a
+   revisão**.
+4. Se é uma região nova → sugere **abrir uma nova restrição**, com o mesmo fluxo de contato.
+
+É isto que fecha o ciclo entre as três coisas: o que o aluno declarou na inscrição, o que é
+revisado periodicamente, e o que realmente acontece dentro da academia.
+
+### 6.6 O que muda no alerta automático
+
+O alerta de contraindicação passa a considerar **status e data** da restrição, não apenas a
+existência dela. "Lesão de ombro, moderada, revisada há 12 dias" é uma informação diferente de
+"lesão de ombro declarada há 8 meses, nunca revisada" — e o coach precisa ver essa diferença no
+momento em que prescreve.
+
+Restrição com revisão vencida aparece com aviso próprio:
+*"⚠️ Esta restrição está sem revisão há X dias. O dado pode estar desatualizado."*
+
+---
+
+## 7. Módulo de evolução e relatórios
+
+### 7.1 O que o aluno registra periodicamente
 
 | Dado | Frequência sugerida |
 |---|---|
@@ -344,8 +526,9 @@ suplementação e observações.
 | Fotos de acompanhamento (mesmos 3 ângulos, mesma luz, mesma hora) | Quinzenal ou mensal |
 | Dobras cutâneas / bioimpedância | Quando houver |
 | Sono, energia, dores, apetite, humor | Semanal (check-in rápido) |
+| **Revisão de restrição ou lesão** | Prazo acordado com o coach, conforme gravidade (seção 6.4) |
 
-### 6.2 Relatório profissional
+### 7.2 Relatório profissional
 
 Gerado automaticamente e exportável em **PDF com a identidade visual do coach**, contendo:
 
@@ -358,6 +541,7 @@ Gerado automaticamente e exportável em **PDF com a identidade visual do coach**
 - **Adesão ao treino:** treinos realizados / prescritos, por semana
 - **Adesão à dieta:** percentual, média de calorias e macros realizados × prescritos
 - Execução das técnicas avançadas (o que ele conseguiu ou não)
+- **Evolução da dor** (escala 0 a 10) ao lado da evolução de carga, para quem tem lesão
 - Observações do aluno no período (dores, dificuldades)
 - **Espaço para o parecer do coach** — o texto dele, que é o que dá valor ao documento
 - Rodapé com marca, CREF/CRN e data de emissão
@@ -367,9 +551,9 @@ de renovação do plano: o aluno **vê** o que comprou.
 
 ---
 
-## 7. Comunicação com o coach
+## 8. Comunicação com o coach
 
-### 7.1 Canal "Fale com o Azambuja"
+### 8.1 Canal "Fale com o Azambuja"
 
 Aba no app onde o aluno envia observações sobre treino, dieta, dificuldades, dúvidas, com
 anexo de foto opcional. Cada mensagem é **categorizada** (Treino / Dieta / Dor ou lesão /
@@ -390,7 +574,7 @@ está perto de vencer.
 > ele **não é um serviço de emergência médica**, e que dor aguda, lesão ou mal-estar exigem
 > procurar atendimento médico imediatamente. Texto no `anexo-b-textos-app.md`.
 
-### 7.2 Videochamada semanal
+### 8.2 Videochamada semanal
 
 - Chamada de **30 minutos por semana**, por aluno.
 - O coach define **quais dias e faixas de horário** ele atende (ex.: terça e quinta, 18h-21h).
@@ -407,7 +591,7 @@ está perto de vencer.
 
 ---
 
-## 8. Pagamentos e planos
+## 9. Pagamentos e planos
 
 | Plano | Observação |
 |---|---|
@@ -436,27 +620,31 @@ Detalhes importantes:
 
 ---
 
-## 9. Painel administrativo do coach
+## 10. Painel administrativo do coach
 
 Tudo em uma única interface web (e também acessível pelo celular):
 
-1. **Início** — solicitações novas, mensagens vencendo hoje, calls do dia, alunos sem registrar
-   treino há X dias (alerta de abandono), aniversariantes.
-2. **Solicitações** — fila de leads com ficha completa, fotos, restrições destacadas; aprovar,
-   recusar, pedir complemento.
+1. **Início** — solicitações novas, **contatos prévios pendentes**, **revisões de restrição
+   vencidas ou vencendo (semáforo)**, **dores relatadas no treino**, mensagens vencendo hoje,
+   calls do dia, alunos sem registrar treino há X dias (alerta de abandono).
+2. **Solicitações** — fila de leads com ficha completa, fotos e restrições destacadas, com
+   **selo vermelho nas que exigem contato antes da prescrição**; aprovar, recusar, pedir
+   complemento, registrar o contato prévio.
 3. **Alunos** — lista com busca e filtros (objetivo, nível, plano, adesão, status); ficha
    individual com histórico completo.
 4. **Prescrição** — montagem de treino e dieta, modelos, publicação.
-5. **Bancos** — exercícios e alimentos.
-6. **Mensagens** — caixa de entrada com SLA.
-7. **Agenda** — disponibilidade e calls.
-8. **Financeiro** — planos, cobranças, inadimplência.
-9. **Relatórios** — por aluno e agregados.
-10. **Configurações** — marca, textos da landing page, prazos, notificações.
+5. **Bancos** — exercícios (com os grupos de equivalência) e alimentos.
+6. **Restrições** — todos os alunos com lesão ou restrição, ordenados por vencimento da
+   revisão, com histórico de cada revisão e da dor relatada.
+7. **Mensagens** — caixa de entrada com SLA.
+8. **Agenda** — disponibilidade e calls.
+9. **Financeiro** — planos, cobranças, inadimplência.
+10. **Relatórios** — por aluno e agregados.
+11. **Configurações** — marca, textos da landing page, prazos, notificações.
 
 ---
 
-## 10. Notificações
+## 11. Notificações
 
 Push (celular) e e-mail, todas configuráveis pelo coach e pelo aluno:
 
@@ -466,17 +654,20 @@ Push (celular) e e-mail, todas configuráveis pelo coach e pelo aluno:
 - "O Azambuja respondeu você"
 - Lembrete de call (24h e 1h antes)
 - Lembrete de pesagem/medidas/fotos
+- **Revisão de lesão ou restrição vencendo** (para o aluno e para o coach)
 - Lembrete de vencimento de plano
-- Para o coach: nova solicitação, mensagem próxima do prazo, aluno sumido, pagamento falhou
+- Para o coach: nova solicitação, **ficha aguardando contato prévio**, **dor relatada no
+  treino**, **revisão de restrição vencida**, mensagem próxima do prazo, aluno sumido,
+  pagamento falhou
 
 ---
 
-## 11. LGPD, segurança e conformidade
+## 12. LGPD, segurança e conformidade
 
 Esta é a seção mais sensível do projeto e precisa ser levada a sério desde o primeiro dia:
 o projeto trata **dados pessoais sensíveis** — dados de saúde e imagens corporais.
 
-### 11.1 Enquadramento legal
+### 12.1 Enquadramento legal
 
 - Dados sobre saúde e condição física são **dados pessoais sensíveis** (art. 5º, II da LGPD).
   Fotos corporais para avaliação física, no contexto deste serviço, devem ser tratadas com o
@@ -486,7 +677,7 @@ o projeto trata **dados pessoais sensíveis** — dados de saúde e imagens corp
 - **O coach é o Controlador** dos dados; quem desenvolve e opera a infraestrutura atua como
   **Operador**. Isso precisa estar num contrato escrito entre as partes.
 
-### 11.2 Medidas concretas que serão implementadas
+### 12.2 Medidas concretas que serão implementadas
 
 **Consentimento**
 - Aceites **separados e independentes**: (a) tratamento de dados de saúde para prestação do
@@ -537,7 +728,7 @@ Uso de Imagem, Contrato de Prestação de Serviços, Contrato Controlador–Oper
 > publicação. Podemos entregar as minutas técnicas prontas para essa revisão, mas a validação
 > jurídica não é substituível — especialmente por envolver dados sensíveis e imagem corporal.
 
-### 11.3 Responsabilidade profissional
+### 12.3 Responsabilidade profissional
 
 - O app é uma ferramenta de trabalho do profissional habilitado; a prescrição é sempre dele.
 - Deve constar de forma visível o **CREF** (e o **CRN** do responsável pela prescrição
@@ -549,9 +740,9 @@ Uso de Imagem, Contrato de Prestação de Serviços, Contrato Controlador–Oper
 
 ---
 
-## 12. Arquitetura técnica
+## 13. Arquitetura técnica
 
-### 12.1 É possível construir isso de forma segura, funcional e leve?
+### 13.1 É possível construir isso de forma segura, funcional e leve?
 
 **Sim.** E a maneira de garantir isso não é escolher a tecnologia "mais moderna", e sim
 escolher uma arquitetura que evite os três erros que afundam projetos deste tipo:
@@ -561,9 +752,9 @@ escolher uma arquitetura que evite os três erros que afundam projetos deste tip
 2. **Construir servidor, autenticação, armazenamento e permissões do zero.** É onde nascem as
    falhas de segurança. Solução: usar uma base gerenciada, madura e auditada, e escrever apenas
    a regra de negócio do coach.
-3. **Colocar tudo no MVP.** Solução: fases (seção 14).
+3. **Colocar tudo no MVP.** Solução: fases (seção 15).
 
-### 12.2 Stack recomendada
+### 13.2 Stack recomendada
 
 | Camada | Tecnologia | Por quê |
 |---|---|---|
@@ -571,7 +762,7 @@ escolher uma arquitetura que evite os três erros que afundam projetos deste tip
 | **Site + landing + painel do coach** | Next.js (React) | Mesma linguagem do app (compartilha regras e componentes), páginas muito rápidas e bem indexadas no Google — importante para a captação |
 | **Backend, banco e autenticação** | Supabase (PostgreSQL gerenciado) na região de São Paulo | Banco relacional sério, autenticação pronta, armazenamento de arquivos, **segurança por linha (RLS)** e API automática. Reduz meses de trabalho e é onde a segurança fica mais forte |
 | **Regras de negócio sensíveis** | Edge Functions (TypeScript) | Cálculo de macros, geração de relatório, integrações, webhooks de pagamento — nada sensível roda no celular |
-| **Armazenamento de fotos** | Supabase Storage (bucket privado + URLs assinadas) | Ver seção 11.2 |
+| **Armazenamento de fotos** | Supabase Storage (bucket privado + URLs assinadas) | Ver seção 12.2 |
 | **Pagamentos** | Asaas / Mercado Pago / Pagar.me / Stripe | Pix + cartão + assinatura recorrente |
 | **E-mail transacional** | Resend ou Amazon SES | Entregabilidade e registro de envio |
 | **Push** | Expo Push Notifications | Nativo do ecossistema, custo zero |
@@ -586,7 +777,7 @@ autenticação e permissões — justamente a parte onde erros custam caro. **Re
 com Supabase.** Como os dados ficam em PostgreSQL puro, migrar para um backend próprio no
 futuro é possível sem perder nada.
 
-### 12.3 Estrutura do repositório
+### 13.3 Estrutura do repositório
 
 ```
 azambuja-team-os/
@@ -605,7 +796,7 @@ azambuja-team-os/
 └─ docs/               Esta documentação
 ```
 
-### 12.4 "Leve" na prática
+### 13.4 "Leve" na prática
 
 - App abaixo de ~30 MB, abre em menos de 2 segundos.
 - Telas de treino e dieta **funcionam offline** e sincronizam depois.
@@ -616,7 +807,7 @@ azambuja-team-os/
 
 ---
 
-## 13. Modelo de dados (visão inicial)
+## 14. Modelo de dados (visão inicial)
 
 Tabelas principais previstas — serve para dimensionar o trabalho, e será refinada:
 
@@ -626,14 +817,21 @@ Tabelas principais previstas — serve para dimensionar o trabalho, e será refi
 | `leads` | Solicitações recebidas pela landing page e status |
 | `students` | Alunos ativos, plano, datas |
 | `student_profiles` | Anamnese: nível, objetivo, rotina, histórico |
-| `dietary_restrictions` / `exercise_restrictions` | Restrições declaradas |
+| `dietary_restrictions` / `exercise_restrictions` | Restrições declaradas, com gravidade, status, dor inicial e data da próxima revisão |
+| `restriction_reviews` | Histórico de cada revisão: data, evolução, dor, conduta, novo laudo |
+| `pre_prescription_contacts` | Registro do contato obrigatório antes da prescrição, ou a dispensa justificada |
+| `pain_reports` | Dor relatada durante o treino: exercício, região, intensidade 0-10 |
+| `medical_documents` | Laudos, exames e atestados (metadados; arquivo em área privada) |
 | `consents` | Cada aceite de LGPD: tipo, versão do texto, data, IP |
 | `body_photos` | Fotos de avaliação (metadados; o arquivo fica no bucket privado) |
 | `body_measurements` | Peso, circunferências, dobras, bioimpedância |
 | `exercises` | Banco de exercícios do coach, com tags e vídeo |
+| `exercise_equivalence_groups` | Grupos de substitutos: quais exercícios trocam entre si |
+| `student_equipment` | Inventário de equipamentos da academia do aluno *(se adotado)* |
 | `workout_templates` / `workout_template_items` | Modelos de treino por objetivo |
 | `workout_plans` / `workout_days` / `workout_exercises` | Treino prescrito ao aluno |
-| `workout_sessions` / `set_logs` | Execução: carga e repetições por série, RIR, técnica |
+| `workout_exercise_options` | Titular e substitutos de cada exercício prescrito, em ordem |
+| `workout_sessions` / `set_logs` | Execução: **qual variação foi feita**, carga e repetições por série, RIR, técnica |
 | `advanced_techniques` | Catálogo de técnicas (após decisão do coach) |
 | `foods` | Base TACO/TBCA/IBGE + alimentos do coach, com tags |
 | `recipes` / `recipe_items` | Preparações do coach |
@@ -648,7 +846,7 @@ Tabelas principais previstas — serve para dimensionar o trabalho, e será refi
 
 ---
 
-## 14. Fases de entrega
+## 15. Fases de entrega
 
 ### Fase 0 — Definição *(1 a 2 semanas)*
 Reunião com o coach usando o `anexo-c-checklist-reuniao.md`; decisões pendentes fechadas;
@@ -664,7 +862,11 @@ O suficiente para o coach **operar e faturar de verdade**:
 - Banco de exercícios (pré-carregado + editável) e banco de alimentos (TACO/TBCA/IBGE)
 - Montagem de treino do zero + modelos
 - Montagem de dieta com 3+ opções por refeição
-- Alertas automáticos de restrição (treino e dieta)
+- Alertas automáticos de restrição (treino e dieta), sensíveis ao status e à data da restrição
+- Pergunta de lesão no cadastro, **trava de contato prévio** e registro da conversa
+- **Revisão periódica de restrições** com prazo acordado, semáforo e lembretes
+- **Titular + 2 substitutos por exercício**, com grupos de equivalência no banco
+- Registro de dor 0-10 no treino, com alerta imediato ao coach
 - App do aluno: treino (carga por série, vídeo, descrição, offline) e dieta (marcação,
   contador de calorias, gráfico de macros)
 - Registro de peso, medidas e fotos
@@ -679,7 +881,8 @@ O suficiente para o coach **operar e faturar de verdade**:
 
 ### Fase 2 — Consolidação *(4 a 6 semanas)*
 **Publicação na App Store e no Google Play** · Técnicas avançadas (conforme a decisão do
-coach) · Relatórios comparativos e agregados ·
+coach) · **Inventário de equipamentos da academia do aluno** · Relatórios comparativos e
+agregados ·
 Chat em tempo real · Programa de indicação ("indique e ganhe") · Metas e conquistas ·
 Integração com Apple Health / Google Fit (passos, peso da balança inteligente) ·
 Exportações para o coach.
@@ -690,14 +893,14 @@ Aplicativo de coach dedicado · Nota fiscal automática · Área de comunidade.
 
 ---
 
-## 15. Custos estimados
+## 16. Custos estimados
 
 > **Correção em relação à primeira estimativa.** A versão inicial deste documento orçava
 > R$ 290 a R$ 400 por mês. Isso estava conservador demais para a fase inicial: dois itens
 > daquela lista não são necessários no começo. **O custo real para começar fica entre R$ 5 e
 > R$ 15 por mês.** O detalhamento abaixo mostra por quê e quando cada custo passa a existir.
 
-### 15.1 Nível 0 — Validação (do lançamento até ~50 alunos)
+### 16.1 Nível 0 — Validação (do lançamento até ~50 alunos)
 
 | Item | Serviço | Custo/mês |
 |---|---|---|
@@ -736,7 +939,7 @@ Aplicativo de coach dedicado · Nota fiscal automática · Área de comunidade.
    Cloudflare R2 (10 GB gratuitos, depois cerca de US$ 0,015 por GB) ou sobe-se de plano.
 4. Sem suporte por e-mail dos fornecedores. Na prática, irrelevante nessa escala.
 
-### 15.2 Nível 1 — Operação (quando o faturamento justificar)
+### 16.2 Nível 1 — Operação (quando o faturamento justificar)
 
 | Item | Custo/mês |
 |---|---|
@@ -749,7 +952,7 @@ Aplicativo de coach dedicado · Nota fiscal automática · Área de comunidade.
 ou quando os limites de armazenamento apertarem. Backup gerenciado por fornecedor, com dado
 de saúde de dezenas de pessoas, vale os R$ 140 — mas não no primeiro mês, com três alunos.
 
-### 15.3 O custo que não desaparece: as lojas de aplicativos
+### 16.3 O custo que não desaparece: as lojas de aplicativos
 
 | Item | Valor |
 |---|---|
@@ -759,7 +962,7 @@ de saúde de dezenas de pessoas, vale os R$ 140 — mas não no primeiro mês, c
 Esse é, de longe, o maior custo recorrente do Nível 0 — a taxa da Apple sozinha custa mais do
 que toda a infraestrutura. **E existe uma forma legítima de adiá-la.**
 
-### 15.4 A alternativa que corta o maior custo: começar como PWA
+### 16.4 A alternativa que corta o maior custo: começar como PWA
 
 Um **PWA** (aplicativo web instalável) é um site que o aluno adiciona à tela de início do
 celular e que passa a se comportar como aplicativo: ícone próprio, tela cheia, sem barra de
@@ -784,7 +987,7 @@ O ponto decisivo é que **isso não é retrabalho**: a stack escolhida (React Na
 gera também a versão web a partir do mesmo código. Publicar nas lojas depois é empacotar o que
 já existe, não reescrever.
 
-### 15.5 Resumo
+### 16.5 Resumo
 
 | Cenário | Custo mensal |
 |---|---|
@@ -801,7 +1004,7 @@ faturamento — e é o custo que realmente importa no longo prazo.
 ano inteiro.** O custo relevante do projeto não é a operação: é o desenvolvimento inicial e,
 depois, as taxas sobre o faturamento.
 
-## 16. Riscos e mitigações
+## 17. Riscos e mitigações
 
 | Risco | Impacto | Como mitigamos |
 |---|---|---|
@@ -810,38 +1013,46 @@ depois, as taxas sobre o faturamento.
 | Baixa adesão do aluno ao registro diário | Relatórios vazios, produto perde valor | Registro em 1 toque, funcionamento offline, lembretes, comparativo de carga visível, gráfico imediato |
 | Vídeo do YouTube removido pelo criador | Aluno vê link quebrado | Verificação automática de links + plano de gravar vídeos próprios |
 | Rejeição do app pelas lojas | Atraso na publicação | Política de privacidade publicada, exclusão de conta dentro do app, avisos de saúde — os três motivos mais comuns de rejeição, tratados desde o início |
+| Restrição declarada uma vez e nunca atualizada | **Alto** — alerta automático baseado em dado vencido | Revisão periódica com prazo acordado, semáforo, lembrete e bloqueio da renovação automática enquanto vencida |
+| Aluno lesionado recebendo treino sem avaliação individual | **Crítico** — risco à saúde e à responsabilidade profissional | Trava de contato prévio: o sistema não publica o treino antes do contato registrado |
+| Exigir 3 opções triplicar o tempo de prescrição | Médio — o coach abandona a regra | Grupos de equivalência no banco: o sistema sugere os substitutos e ele só confirma |
 | Falta de definição sobre técnicas avançadas | Retrabalho na modelagem do treino | Já isolado como decisão explícita (Anexo A) antes de codificar |
 | Inadimplência em planos por Pix | Perda de receita | Lembretes automáticos, tolerância configurável, bloqueio automático |
 | Dependência de uma pessoa só (o coach) | Gargalo de atendimento | SLA visível, modelos de treino/dieta, respostas rápidas prontas, e o caminho de "assistente" já previsto na arquitetura |
 
 ---
 
-## 17. Decisões pendentes com o coach
+## 18. Decisões pendentes com o coach
 
 Lista resumida — a versão detalhada, pronta para conduzir a reunião, está no
 `anexo-c-checklist-reuniao.md`.
 
 1. **Montagem de treino:** só do zero, só por modelos, ou os dois? *(recomendação: os dois)*
 2. **Técnicas avançadas:** quais ele efetivamente prescreve? (Anexo A)
-3. **Vídeos:** só links do YouTube (Leandro Twin) ou também vídeos próprios dele?
-4. **Registro de RIR/RPE:** entra ou é complexidade demais para o aluno?
-5. **Prescrição dietética:** ele é nutricionista, tem nutricionista parceiro, ou atua com
+3. **Prazos de revisão** por tipo e gravidade de lesão — confirmar ou substituir a tabela 6.4.
+4. **A trava de contato prévio bloqueia mesmo a publicação do treino,** ou apenas alerta?
+   *(recomendação: bloqueia, com dispensa justificada disponível)*
+5. **Exigir 3 opções em todos os exercícios,** ou só nos que dependem de aparelho específico?
+6. **Inventário de equipamentos da academia do aluno** entra no MVP ou na Fase 2?
+7. **Vídeos:** só links do YouTube (Leandro Twin) ou também vídeos próprios dele?
+8. **Registro de RIR/RPE:** entra ou é complexidade demais para o aluno?
+9. **Prescrição dietética:** ele é nutricionista, tem nutricionista parceiro, ou atua com
    orientação alimentar? Define o texto legal e o CRN no relatório.
-6. **Prazo de resposta** para a solicitação inicial (sugestão: 2 dias úteis).
-7. **Dias e horários** fixos para as videochamadas.
-8. **Preços** dos quatro planos e política de cancelamento/reembolso.
-9. **Gateway de pagamento** preferido.
-10. **Aceita alunos menores de 18 anos?**
-11. **Marca:** nome, logo, cores, domínio.
-12. **Periodicidade** de fotos e medidas de acompanhamento.
-13. **Retenção de dados:** por quanto tempo guardar fotos após o fim do contrato.
-14. **Lançar como PWA ou já publicar nas lojas?** *(recomendação: PWA primeiro — economiza
+10. **Prazo de resposta** para a solicitação inicial (sugestão: 2 dias úteis).
+11. **Dias e horários** fixos para as videochamadas.
+12. **Preços** dos quatro planos e política de cancelamento/reembolso.
+13. **Gateway de pagamento** preferido.
+14. **Aceita alunos menores de 18 anos?**
+15. **Marca:** nome, logo, cores, domínio.
+16. **Periodicidade** de fotos e medidas de acompanhamento.
+17. **Retenção de dados:** por quanto tempo guardar fotos após o fim do contrato.
+18. **Lançar como PWA ou já publicar nas lojas?** *(recomendação: PWA primeiro — economiza
     US$ 99/ano da Apple, elimina a espera por revisão e não gera retrabalho)*
-15. **O que entra e o que fica de fora do MVP.**
+19. **O que entra e o que fica de fora do MVP.**
 
 ---
 
-## 18. Conclusão
+## 19. Conclusão
 
 O projeto é tecnicamente viável, com custo operacional baixo, e o diferencial competitivo está
 exatamente onde deveria estar: **no método do coach, amplificado por automação**. As duas
