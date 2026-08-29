@@ -45,13 +45,18 @@ O que torna a plataforma diferenciada:
 5. **Ritual semanal.** Videochamada de 30 minutos com relatório na tela. O acompanhamento
    deixa de ser "manda no WhatsApp" e vira consultoria com evidência.
 
-6. **Recorrência de receita.** Planos mensal, trimestral, semestral e anual, com Pix e cartão,
-   cobrança automática e renovação.
+6. **Vagas limitadas e fila de espera.** O coach define quantos alunos aceita; lotado, o
+   interessado entra numa fila com posição visível. Protege a qualidade do atendimento e cria
+   escassez real.
+
+**O acompanhamento começa gratuito.** Nada de pagamento entra na primeira versão — isso liberou
+2 a 3 semanas de cronograma, realocadas para engenharia de qualidade e confiabilidade
+(seção 14). Cobrança fica como planejamento da Fase 2, para quando houver demanda.
 
 **Prazo estimado do MVP:** 10 a 14 semanas após o congelamento do escopo.
 **Custo operacional estimado:** R$ 3 a R$ 15 por mês no início, lançando como aplicativo
 instalável pelo navegador (PWA); cerca de R$ 190/mês quando o volume justificar backup
-gerenciado e publicação nas lojas. Detalhamento e ressalvas na seção 16.
+gerenciado e publicação nas lojas. Detalhamento e ressalvas na seção 17.
 
 ---
 
@@ -152,15 +157,16 @@ Assim que envia, o aluno vê uma tela de confirmação com o **prazo de resposta
 (parâmetro configurável — sugestão: até 2 dias úteis) e recebe o mesmo prazo por e-mail e
 por WhatsApp. Se o prazo estourar, o sistema avisa o coach automaticamente.
 
-### 3.4 Aprovação, pagamento e liberação
+### 3.4 Aprovação e liberação
 
 1. O coach analisa a ficha na fila de solicitações. Fichas com lesão declarada vêm com
    **selo vermelho de contato obrigatório**.
 
 2. Aprova (ou recusa com justificativa, ou pede complemento de informação).
-3. Aprovado → o aluno recebe o link de pagamento com os planos disponíveis.
-4. Pagamento confirmado → conta criada, acesso ao app liberado, coach notificado para montar
-   o protocolo.
+3. Aprovado → conta criada e acesso ao app liberado. *(No MVP o acompanhamento é gratuito;
+   quando houver cobrança, é aqui que entra o pagamento — seção 9.)*
+
+4. Coach notificado para montar o protocolo.
 
 5. **Se houver lesão declarada:** o coach faz o contato prévio e registra a conversa, a
    conduta e o prazo de revisão acordado. O sistema não libera a publicação do treino antes
@@ -178,6 +184,40 @@ por WhatsApp. Se o prazo estourar, o sistema avisa o coach automaticamente.
 - **Minha call:** agendamento e link da videochamada semanal.
 
 ---
+
+### 3.6 Controle de vagas e fila de espera
+
+Com o acompanhamento gratuito no início, o gargalo deixa de ser o preço e passa a ser **o tempo
+do coach**. Sem controle, a divulgação funciona bem demais: chegam 60 inscrições, ele não
+responde no prazo prometido, e a primeira impressão do produto é de abandono.
+
+Por isso:
+
+- O coach define **quantas vagas** aceita (número editável a qualquer momento).
+- Com vagas abertas, o botão é **"Quero ser aluno"**.
+- Lotado, o mesmo botão vira **"Entrar na fila de espera"**, com posição visível: *"você é o
+  12º da fila"*.
+
+- Quando abre vaga, o primeiro da fila é avisado por e-mail e WhatsApp e tem **prazo para
+  confirmar** antes de a vez passar adiante.
+
+- O coach vê a fila no painel e pode puxar alguém para frente, se quiser.
+
+> Além de proteger a qualidade do atendimento, a fila cria escassez real — o que ajuda
+> exatamente no momento em que ele decidir passar a cobrar.
+
+### 3.7 Situações do dia a dia que precisam de resposta definida
+
+Casos que ocorrem em qualquer operação de coaching e que, sem regra escrita, viram improviso:
+
+| Situação | Como o sistema trata |
+|---|---|
+| **Aluno pausa** (férias, viagem, lesão longa) | Conta congelada, sem perder histórico. Não recebe cobrança de revisão nem lembrete de treino. Volta de onde parou |
+| **Aluno não treinou no dia** | O treino **não vence**: fica pendente e pode ser executado depois, com a data real registrada. A adesão conta a sessão como realizada fora do dia, e não como falha — mas o relatório mostra a diferença |
+| **Aluno sai** | Conta arquivada, dados retidos pelo prazo da política e depois excluídos. Se voltar, o histórico é recuperado |
+| **Coach de férias ou doente** | Ele ativa o **modo ausência**: o prazo de resposta é suspenso, o aluno vê o aviso e a data de retorno, e novas inscrições pausam |
+| **Aluno troca de celular** | Login em qualquer aparelho; tudo está no servidor. Recuperação de acesso por e-mail, com verificação |
+| **O app quebra** | Canal de **suporte técnico separado** do "Fale com o Azambuja" — o coach não deve receber, nem tentar resolver, problema de software |
 
 ## 4. Módulo de treino
 
@@ -625,6 +665,19 @@ está perto de vencer.
 
 ## 9. Pagamentos e planos
 
+> ### 🕐 Fora do MVP
+>
+> **O acompanhamento começa gratuito.** Nada de pagamento entra na primeira versão: sem planos,
+> sem gateway, sem cobrança, sem bloqueio por inadimplência. Isso retira 2 a 3 semanas do
+> cronograma, que foram realocadas para a seção 14 (qualidade e confiabilidade).
+>
+> O modelo de dados já nasce preparado para receber cobrança, e esta seção fica registrada como
+> **planejamento da Fase 2**, para quando houver demanda que justifique cobrar. Nada aqui está
+> decidido.
+>
+> **Gratuito não reduz nenhuma exigência:** LGPD, consentimento, proteção das fotos e
+> responsabilidade profissional valem igual, cobrando ou não.
+
 | Plano | Observação |
 |---|---|
 | Mensal | Porta de entrada, maior taxa de cancelamento |
@@ -664,7 +717,7 @@ Tudo em uma única interface web (e também acessível pelo celular):
    vencidas ou vencendo (semáforo)**, **dores relatadas no treino**, mensagens vencendo hoje,
    calls do dia, alunos sem registrar treino há X dias (alerta de abandono).
 
-2. **Solicitações** — fila de leads com ficha completa, fotos e restrições destacadas, com
+2. **Solicitações e fila de espera** — vagas abertas, fila com posições, e a fila de leads com ficha completa, fotos e restrições destacadas, com
    **selo vermelho nas que exigem contato antes da prescrição**; aprovar, recusar, pedir
    complemento, registrar o contato prévio.
 
@@ -695,7 +748,8 @@ Push (celular) e e-mail, todas configuráveis pelo coach e pelo aluno:
 - Lembrete de call (24h e 1h antes)
 - Lembrete de pesagem/medidas/fotos
 - **Revisão de lesão ou restrição vencendo** (para o aluno e para o coach)
-- Lembrete de vencimento de plano
+- Vaga aberta, para quem está na fila de espera
+- Aviso de modo ausência do coach
 - Para o coach: nova solicitação, **ficha aguardando contato prévio**, **dor relatada no
   treino**, **revisão de restrição vencida**, mensagem próxima do prazo, aluno sumido,
   pagamento falhou
@@ -768,8 +822,10 @@ mandar e-mail.
 - Backups automáticos diários com restauração testada.
 - Log de auditoria de todas as ações administrativas, com retenção própria e separada dos
   logs de erro.
+
 - **Logs de erro sem nenhum dado pessoal ou de saúde** — filtro obrigatório antes do envio,
   gravação de sessão desligada, retenção de 30 a 90 dias (detalhamento na seção 13.5).
+
 - Rate limiting e proteção contra abuso nos formulários públicos.
 - Dados hospedados preferencialmente **em região brasileira** (São Paulo), reduzindo latência
   e simplificando a conformidade.
@@ -810,7 +866,7 @@ escolher uma arquitetura que evite os três erros que afundam projetos deste tip
    falhas de segurança. Solução: usar uma base gerenciada, madura e auditada, e escrever apenas
    a regra de negócio do coach.
 
-3. **Colocar tudo no MVP.** Solução: fases (seção 15).
+3. **Colocar tudo no MVP.** Solução: fases (seção 16).
 
 ### 13.2 Stack recomendada
 
@@ -936,7 +992,128 @@ preferir que **nenhum dado saia para fornecedor externo**, existe a alternativa 
 ferramenta na própria infraestrutura (Sentry self-hosted ou GlitchTip): elimina o terceiro, mas
 acrescenta trabalho de operação e algum custo de servidor. **A decidir — item `B8`.**
 
-## 14. Modelo de dados (visão inicial)
+## 14. Qualidade, confiabilidade e desempenho
+
+Esta seção existe porque a minuta descrevia bem **o que** o app faz e mal **como se garante que
+ele não quebra**. Aplicativo de excelência não é o que tem mais funcionalidade: é o que abre
+rápido, não trava, não perde dado e não surpreende. Isso não acontece por capricho de quem
+programa — acontece porque foi orçado, medido e verificado a cada versão.
+
+### 14.1 Metas medíveis
+
+Cada uma é acompanhada automaticamente e vira critério de aprovação de cada nova versão.
+
+| Indicador | Meta | Como é medido |
+|---|---|---|
+| Sessões sem travamento | **acima de 99,5%** | Ferramenta de monitoramento (13.5) |
+| Tempo até a primeira tela útil | **abaixo de 2 s** | Medição automática a cada versão |
+| Resposta ao toque (abrir exercício, marcar refeição) | **abaixo de 400 ms** | Medição automática |
+| Tamanho do aplicativo | **abaixo de 30 MB** | Verificado antes de publicar |
+| Registro de treino perdido | **zero** | Reconciliação da fila offline |
+| Disponibilidade do serviço | **99,5% ao mês** | Monitor externo, a cada minuto |
+| Tempo para voltar ao ar após falha grave | **abaixo de 4 h** | Teste de restauração |
+| Perda máxima de dados em desastre | **24 h** | Backup diário verificado |
+
+### 14.2 Como isso é sustentado
+
+**Três ambientes separados.** Desenvolvimento, **homologação** (cópia fiel da produção, com
+dados fictícios — nunca dado real de aluno) e produção. Nada chega ao aluno sem passar por
+homologação.
+
+**Testes automatizados**, concentrados onde o erro é caro:
+
+- **Cálculos:** macros, calorias, progressão de carga, percentual de adesão e cruzamento de
+  restrições. São os números que o coach usa para decidir — um erro aqui passa despercebido por
+  semanas e contamina todos os relatórios.
+
+- **Fluxos críticos de ponta a ponta:** inscrição com foto e consentimento · publicação de
+  treino com a trava de contato prévio · registro de treino offline e sincronização · registro
+  de refeição · geração de relatório. Se algum quebrar, o produto para.
+
+- **Regras de segurança:** teste automático que confirma que um aluno não consegue ler o dado de
+  outro. Roda a cada mudança, porque é a falha mais grave possível neste projeto.
+
+**Verificação automática antes de publicar.** Nenhuma versão vai ao ar sem a bateria de testes
+passar, o tamanho do app estar dentro do orçamento e as medições de desempenho baterem a meta.
+
+**Rollback em minutos.** Toda versão publicada pode ser revertida para a anterior sem esperar
+revisão de loja — no PWA é imediato; no app de loja, por atualização remota. Além disso,
+**atualização obrigatória** para o caso de bug crítico: o app se recusa a rodar em uma versão
+sabidamente defeituosa.
+
+### 14.3 Sincronização offline e conflito — a regra escrita
+
+Este é o bug clássico de aplicativo de treino, e precisa de regra definida antes de existir
+código. O cenário: o aluno registra o treino sem sinal na academia e, nesse meio-tempo, o coach
+publica um protocolo novo.
+
+**A regra:**
+
+1. **O que o aluno executou nunca é sobrescrito.** Registro de execução é fato acontecido: entra
+   como registro novo, jamais é substituído por dado vindo do servidor.
+
+2. **A prescrição do coach é a autoridade.** Se ele publicou versão nova, ela vale a partir dali.
+3. **Cada sessão fica vinculada à versão do protocolo que valia quando foi executada.** Assim o
+   relatório continua correto: compara a carga contra a prescrição certa.
+
+4. **O aluno é avisado, não corrigido:** *"Seu treino foi atualizado pelo Azambuja. O que você
+   registrou hoje foi salvo."*
+
+5. Se o mesmo aluno registrar em dois aparelhos, vale o registro mais recente por série, com o
+   descartado preservado no histórico — nunca apagado em silêncio.
+
+> **Decorrência:** treino e dieta passam a ser **versionados**. Cada publicação gera uma versão
+> com data, e o histórico mostra o que estava valendo em cada semana. Isso também entrega ao
+> coach a linha do tempo do aluno, útil na call e necessária como prontuário.
+
+### 14.4 Fuso horário e a virada do dia
+
+Parece detalhe e é fonte garantida de erro. Definições:
+
+- Tudo é gravado em horário universal e exibido no fuso do aluno.
+- **O "dia de treino" vira às 3h da manhã, no horário local do aluno.** Quem treina à noite e
+  registra 00h30 ainda está registrando o dia anterior, como espera.
+
+- O mesmo vale para o registro alimentar e para a contagem de adesão.
+
+### 14.5 Backup e recuperação
+
+- Backup diário automático do banco e dos arquivos, guardado em local separado da base
+  principal.
+
+- **Teste de restauração mensal**, com registro do resultado. Backup que nunca foi restaurado
+  não é backup: é suposição.
+
+- Objetivos declarados: perder no máximo **24 horas** de dados e voltar ao ar em até **4 horas**.
+
+### 14.6 Acessibilidade e legibilidade — o app é usado na academia
+
+O ambiente de uso é hostil: luz forte, tela suja, mão suada, pressa entre séries, às vezes uma
+mão só. O desenho precisa considerar isso:
+
+- **Contraste alto** e **modo escuro**, que é o que a maioria prefere em ambiente com espelho e
+  luz direta.
+
+- **Fonte que respeita o tamanho escolhido pelo aluno** no sistema — inclusive alunos mais
+  velhos, com o texto bem maior.
+
+- **Alvos de toque grandes** nos campos de carga e nas opções de refeição, que são o que mais se
+  toca no dia a dia.
+
+- Telas principais **operáveis com uma mão**.
+- Compatibilidade com leitor de tela nos fluxos principais.
+- Nada depende apenas de cor para comunicar — o gráfico de macros também traz número e rótulo.
+
+### 14.7 Saber onde o aluno desiste
+
+Além do log de erro, o app registra, **sem nenhum dado pessoal**, onde as pessoas abandonam:
+quantos começam a inscrição e não terminam, em qual etapa param, quantos registram o primeiro
+treino, quantos ainda registram na quarta semana. Sem isso não há como melhorar o produto — só
+opinar sobre ele. Valem as mesmas regras de filtro da seção 13.5.
+
+---
+
+## 15. Modelo de dados (visão inicial)
 
 Tabelas principais previstas — serve para dimensionar o trabalho, e será refinada:
 
@@ -969,13 +1146,17 @@ Tabelas principais previstas — serve para dimensionar o trabalho, e será refi
 | `messages` / `message_threads` | Canal com o coach, com prazo de SLA |
 | `appointments` | Videochamadas semanais |
 | `reports` | Relatórios gerados |
-| `subscriptions` / `payments` | Planos e cobranças |
+| `subscriptions` / `payments` | Planos e cobranças *(estrutura preparada; sem uso no MVP)* |
+| `waitlist` | Fila de espera, com posição, data de entrada e prazo de confirmação |
+| `student_status_changes` | Pausas, arquivamentos e retornos, com motivo e data |
+| `protocol_versions` | Versões publicadas de treino e dieta, com a data de vigência |
+| `sync_queue` | Registros feitos offline aguardando envio, e o que foi descartado por conflito |
 | `audit_logs` | Auditoria de acessos e ações administrativas |
 | `notifications` | Fila e histórico de envios |
 
 ---
 
-## 15. Fases de entrega
+## 16. Fases de entrega
 
 ### Fase 0 — Definição *(1 a 2 semanas)*
 Reunião com o coach usando o `anexo-c-checklist-reuniao.md`; decisões pendentes fechadas;
@@ -987,7 +1168,7 @@ O suficiente para o coach **operar e faturar de verdade**:
 - Site + landing page com o link de divulgação e o botão "Quero ser aluno"
 - Formulário de inscrição completo, com fotos e consentimentos LGPD
 - Fila de solicitações e aprovação pelo coach
-- Planos, pagamento (Pix + cartão) e liberação de acesso
+- **Controle de vagas e fila de espera**
 - Banco de exercícios (pré-carregado + editável) e banco de alimentos (TACO/TBCA/IBGE)
 - Montagem de treino do zero + modelos
 - Montagem de dieta com 3+ opções por refeição
@@ -1005,14 +1186,27 @@ O suficiente para o coach **operar e faturar de verdade**:
 - Agenda e link da call semanal
 - Notificações push essenciais
 - Monitoramento de erros e travamentos, com filtro de dados pessoais e alerta imediato
-- Painel do coach
+- Painel do coach, com modo ausência
+- **Engenharia de qualidade (seção 14):** ambiente de homologação, testes automatizados dos
+  cálculos e dos fluxos críticos, verificação antes de publicar, rollback, teste de restauração
+  de backup e medição de desempenho por versão
+
+- Regra de conflito de sincronização offline e versionamento de protocolo
+- Acessibilidade: contraste, modo escuro, fonte ajustável, alvos de toque grandes
+- Pausa e arquivamento de aluno, canal de suporte técnico separado
 - **Rotina própria de backup diário** (obrigatória: o plano gratuito do banco não faz backup)
 - Lançamento como **PWA** — aplicativo instalável pela tela de início, sem taxa de loja e sem
   espera por revisão. Publicação na App Store e no Google Play fica para a Fase 2 (ver 15.4)
 
+> **Nota de cronograma:** a retirada do módulo de pagamento (−2 a 3 semanas) e a entrada da
+> engenharia de qualidade (+2 a 3 semanas) se compensam. O prazo do MVP permanece em **10 a 14
+> semanas** — o que muda é *onde* o esforço é gasto: menos funcionalidade de cobrança, mais
+> garantia de que nada quebra.
+
 ### Fase 2 — Consolidação *(4 a 6 semanas)*
-**Publicação na App Store e no Google Play** · Técnicas avançadas (conforme a decisão do
-coach) · **Inventário de equipamentos da academia do aluno** · Relatórios comparativos e
+**Módulo de pagamento** (planos, Pix e cartão), quando houver demanda que justifique cobrar ·
+**Publicação na App Store e no Google Play**, avaliando antes a taxa de loja (9.1) · Técnicas
+avançadas (conforme a decisão do coach) · **Inventário de equipamentos da academia do aluno** · Relatórios comparativos e
 agregados ·
 Chat em tempo real · Programa de indicação ("indique e ganhe") · Metas e conquistas ·
 Integração com Apple Health / Google Fit (passos, peso da balança inteligente) ·
@@ -1024,14 +1218,14 @@ Aplicativo de coach dedicado · Nota fiscal automática · Área de comunidade.
 
 ---
 
-## 16. Custos estimados
+## 17. Custos estimados
 
 > **Correção em relação à primeira estimativa.** A versão inicial deste documento orçava
 > R$ 290 a R$ 400 por mês. Isso estava conservador demais para a fase inicial: dois itens
 > daquela lista não são necessários no começo. **O custo real para começar fica entre R$ 5 e
 > R$ 15 por mês.** O detalhamento abaixo mostra por quê e quando cada custo passa a existir.
 
-### 16.1 Nível 0 — Validação (do lançamento até ~50 alunos)
+### 17.1 Nível 0 — Validação (do lançamento até ~50 alunos)
 
 | Item | Serviço | Custo/mês |
 |---|---|---|
@@ -1074,7 +1268,7 @@ Aplicativo de coach dedicado · Nota fiscal automática · Área de comunidade.
 
 4. Sem suporte por e-mail dos fornecedores. Na prática, irrelevante nessa escala.
 
-### 16.2 Nível 1 — Operação (quando o faturamento justificar)
+### 17.2 Nível 1 — Operação (quando o faturamento justificar)
 
 | Item | Custo/mês |
 |---|---|
@@ -1087,7 +1281,7 @@ Aplicativo de coach dedicado · Nota fiscal automática · Área de comunidade.
 ou quando os limites de armazenamento apertarem. Backup gerenciado por fornecedor, com dado
 de saúde de dezenas de pessoas, vale os R$ 140 — mas não no primeiro mês, com três alunos.
 
-### 16.3 O custo que não desaparece: as lojas de aplicativos
+### 17.3 O custo que não desaparece: as lojas de aplicativos
 
 | Item | Valor |
 |---|---|
@@ -1097,7 +1291,7 @@ de saúde de dezenas de pessoas, vale os R$ 140 — mas não no primeiro mês, c
 Esse é, de longe, o maior custo recorrente do Nível 0 — a taxa da Apple sozinha custa mais do
 que toda a infraestrutura. **E existe uma forma legítima de adiá-la.**
 
-### 16.4 A alternativa que corta o maior custo: começar como PWA
+### 17.4 A alternativa que corta o maior custo: começar como PWA
 
 Um **PWA** (aplicativo web instalável) é um site que o aluno adiciona à tela de início do
 celular e que passa a se comportar como aplicativo: ícone próprio, tela cheia, sem barra de
@@ -1122,7 +1316,7 @@ O ponto decisivo é que **isso não é retrabalho**: a stack escolhida (React Na
 gera também a versão web a partir do mesmo código. Publicar nas lojas depois é empacotar o que
 já existe, não reescrever.
 
-### 16.5 Resumo
+### 17.5 Resumo
 
 | Cenário | Custo mensal |
 |---|---|
@@ -1139,12 +1333,16 @@ faturamento — e é o custo que realmente importa no longo prazo.
 ano inteiro.** O custo relevante do projeto não é a operação: é o desenvolvimento inicial e,
 depois, as taxas sobre o faturamento.
 
-## 17. Riscos e mitigações
+## 18. Riscos e mitigações
 
 | Risco | Impacto | Como mitigamos |
 |---|---|---|
 | Vazamento de fotos corporais | **Crítico** — dano de imagem e responsabilização legal | Bucket privado, URL assinada de curta duração, sem EXIF, marca d'água, log de auditoria, retenção limitada, 2FA no acesso do coach |
 | Ferramenta de monitoramento capturar dado sensível no log | **Alto** — vazamento por onde ninguém olha | Filtro antes do envio, gravação de sessão desligada, identificação só por código interno, retenção curta (13.5) |
+| Bug chegar ao aluno sem forma de voltar atrás | **Alto** — perda de confiança logo no início | Homologação obrigatória, testes automatizados, verificação antes de publicar e rollback em minutos (14.2) |
+| Registro de treino perdido na sincronização offline | **Alto** — o aluno perde o trabalho e desiste do app | Regra escrita de conflito: execução nunca é sobrescrita, protocolo é versionado (14.3) |
+| Demanda maior que a capacidade do coach | **Alto** — prazo estourado e má primeira impressão | Vagas limitadas e fila de espera (3.6), com modo ausência |
+| Taxa de loja ao começar a cobrar | Médio a alto — até 30% da receita | Avaliar antes de publicar nas lojas; o PWA elimina o problema (9.1) |
 | Escopo crescer sem controle | Atraso e estouro de custo | Escopo do MVP congelado por escrito; novidades vão para a Fase 2 |
 | Baixa adesão do aluno ao registro diário | Relatórios vazios, produto perde valor | Registro em 1 toque, funcionamento offline, lembretes, comparativo de carga visível, gráfico imediato |
 | Vídeo do YouTube removido pelo criador | Aluno vê link quebrado | Verificação automática de links + plano de gravar vídeos próprios |
@@ -1158,9 +1356,9 @@ depois, as taxas sobre o faturamento.
 
 ---
 
-## 18. Registro de decisões
+## 19. Registro de decisões
 
-São **21 decisões** e **1 já fechada**. Estão separadas por **quando cada uma precisa estar
+São **25 decisões** e **2 já fechadas**. Estão separadas por **quando cada uma precisa estar
 resolvida** — não por assunto. Uma decisão do Bloco A tomada tarde para o desenvolvimento
 inteiro; uma do Bloco C tomada tarde atrasa só o lançamento.
 
@@ -1169,15 +1367,16 @@ alterada depois** — que é o custo real de adiar.
 
 ---
 
-### 18.1 Já decidido
+### 19.1 Já decidido
 
 | # | Decisão | Definição |
 |---|---|---|
+| ✅ **F2** | Cobrança no MVP | **Não existe.** O acompanhamento começa gratuito, sem planos nem gateway. O modelo de dados nasce preparado, e a decisão de cobrar — se, quando e por qual meio — fica em aberto até haver demanda real. Ver 9.1 antes de decidir cobrar dentro de app de loja |
 | ✅ **F1** | O que acontece quando a revisão de restrição vence | Trava **apenas a renovação automática por modelo**. O coach continua podendo publicar manualmente, com registro, e o aluno **nunca** perde o acesso ao treino atual. *(Levar à reunião só para ciência.)* |
 
 ---
 
-### 18.2 Bloco A — Travam o início do desenvolvimento
+### 19.2 Bloco A — Travam o início do desenvolvimento
 
 **Precisam sair da reunião.** Sem elas, não se escreve a primeira linha de código sem risco de
 retrabalho.
@@ -1230,9 +1429,18 @@ educação física?
 - **Recomendação:** congelar por escrito e assinar; tudo o que surgir depois vai para a Fase 2
 - **Se mudar depois:** é exatamente o que faz projeto assim estourar prazo e orçamento
 
+**A8 · Alunos atuais** — Ele já atende alunos hoje? Eles migram para o app no lançamento, ou
+entram aos poucos pelo fluxo normal?
+
+- **Recomendação:** entrarem aos poucos, pelo fluxo normal — não custa nada e ainda serve de
+  revisão da base. Migração em massa só se ele tiver muitos alunos e histórico que valha
+  importar
+
+- **Se mudar depois:** exige construir importação em massa, que é trabalho fora do previsto
+
 ---
 
-### 18.3 Bloco B — Precisam sair até a metade do MVP
+### 19.3 Bloco B — Precisam sair até a metade do MVP
 
 **Prazo: até a semana 6.** Não travam o começo, mas travam módulos específicos.
 
@@ -1246,10 +1454,13 @@ educação física?
 | **B6** | Gateway de pagamento | Comparar taxas de Asaas, Mercado Pago, Pagar.me e Stripe com o contador |
 | **B7** | Aceita alunos menores de 18 anos? | Se sim, exige consentimento do responsável e muda o fluxo de cadastro |
 | **B8** | Monitoramento de erros: ferramenta externa (Sentry) ou hospedada por nós? | Sentry gratuito, com o filtro de dados da seção 13.5. Self-hosted só se ele exigir que nada saia |
+| **B9** | Quantas vagas ele aceita simultaneamente? | Começar baixo (10 a 15) e subir conforme sentir o ritmo — é mais fácil abrir vaga do que se desculpar por atraso |
+| **B10** | Treino não executado no dia: fica pendente ou vence? | Fica pendente, com a data real registrada e a diferença visível no relatório |
+| **B11** | Pausa do aluno: quantas por ano e por quanto tempo? | Livre no início, com registro de motivo. Regra rígida só se virar problema |
 
 ---
 
-### 18.4 Bloco C — Precisam sair até o lançamento
+### 19.4 Bloco C — Precisam sair até o lançamento
 
 **Prazo: até a semana 10.** Nenhuma trava desenvolvimento; todas travam a publicação.
 
@@ -1259,23 +1470,23 @@ educação física?
 | **C2** | Marca: nome, logo, cores e domínio | Definir cedo, porque alimenta a landing page |
 | **C3** | Dias e horários fixos para as videochamadas | Blocos fixos na semana, não agenda aberta |
 | **C4** | Retenção: por quanto tempo guardar fotos e dados após o fim do contrato | 12 meses, com exclusão automática |
-| **C5** | Lançar como PWA ou já publicar nas lojas? | PWA primeiro — economiza US$ 99/ano e a espera por revisão, sem retrabalho (ver 16.4) |
+| **C5** | Lançar como PWA ou já publicar nas lojas? | PWA primeiro — economiza US$ 99/ano e a espera por revisão, sem retrabalho (ver 17.4) |
 | **C6** | Quem é o Encarregado de dados (DPO) e qual e-mail publicar | Pode ser o próprio coach, com e-mail dedicado |
 
 ---
 
-### 18.5 Resumo para a reunião
+### 19.5 Resumo para a reunião
 
 | Bloco | Quantas | Quando | Consequência de não decidir |
 |---|---|---|---|
-| **A — Travam o início** | 7 | **Na reunião** | O desenvolvimento não começa, ou começa com risco alto de retrabalho |
-| **B — Metade do MVP** | 8 | Até a semana 6 | Módulos específicos ficam parados |
+| **A — Travam o início** | 8 | **Na reunião** | O desenvolvimento não começa, ou começa com risco alto de retrabalho |
+| **B — Metade do MVP** | 11 | Até a semana 6 | Módulos específicos ficam parados |
 | **C — Lançamento** | 6 | Até a semana 10 | O produto fica pronto mas não pode ser publicado |
 
 > A pauta operacional, bloco a bloco e com os itens de apoio de cada decisão, está no
 > `anexo-c-checklist-reuniao.md`.
 
-## 19. Conclusão
+## 20. Conclusão
 
 O projeto é tecnicamente viável, com custo operacional baixo, e o diferencial competitivo está
 exatamente onde deveria estar: **no método do coach, amplificado por automação**. As duas

@@ -1,7 +1,7 @@
 # Anexo C — Pauta da reunião de definição
 
 Checklist para conduzir a reunião com o coach. Cada item fechado aqui é uma semana de
-retrabalho evitada depois. **Tempo estimado: 120 a 150 minutos.**
+retrabalho evitada depois. **Tempo estimado: 140 a 170 minutos.**
 
 Os códigos `A1`, `B3`, `C5` remetem ao **registro de decisões da seção 18 da minuta**. Os itens
 marcados com **`A`** são os que travam o início do desenvolvimento: **se a reunião só conseguir
@@ -15,7 +15,10 @@ Sugestão de condução: apresentar a minuta em 20 minutos, e usar o resto do te
 
 - [ ] `C2` Nome da marca e domínio (`.com.br`)
 - [ ] Já existe logo e identidade visual? Se não, quem faz?
-- [ ] `C1` Preço dos planos: mensal, trimestral, semestral, anual
+- [ ] `C1` Preço dos planos — **não é decisão desta reunião** (o app começa gratuito), mas vale
+      registrar a intenção dele para dimensionar a Fase 2
+
+- [ ] Ele entende que, ao cobrar dentro de app de loja, a Apple pode reter até 30%? (ver 9.1)
 - [ ] Política de cancelamento e reembolso
 - [ ] Quantos alunos ele quer atender por mês? E qual o teto de atendimento dele?
 - [ ] `B6` Gateway de pagamento preferido (Asaas / Mercado Pago / Pagar.me / Stripe)
@@ -131,9 +134,25 @@ Sugestão de condução: apresentar a minuta em 20 minutos, e usar o resto do te
 - [ ] `C6` Quem será o **Encarregado de dados (DPO)** e qual e-mail publicar
 - [ ] `B8` **Monitoramento de erros:** ferramenta externa (Sentry, gratuita) ou hospedada por
       nós? *(externa, com filtro de dados; self-hosted só se ele exigir que nada saia)*
+
 - [ ] Ele concorda com a **retenção de 30 a 90 dias** para logs de erro?
 - [ ] Ele tem advogado para revisar os documentos? Se não, providenciar
 - [ ] Ele concorda com o 2FA obrigatório na conta dele?
+
+## Bloco 8B — Operação e capacidade *(15 min)* ⚠️ novo
+
+- [ ] `A8` **Ele já tem alunos hoje?** Quantos? Migram para o app no lançamento ou entram aos
+      poucos pelo fluxo normal? *(migração em massa é trabalho extra)*
+
+- [ ] `B9` **Quantas vagas** ele aceita simultaneamente? *(recomendação: começar com 10 a 15)*
+- [ ] Confirmar a **fila de espera**: quando lotar, o botão vira "entrar na fila"
+- [ ] Prazo que o primeiro da fila tem para confirmar antes de a vez passar
+- [ ] `B10` Treino não executado no dia: fica pendente ou vence? *(recomendação: pendente)*
+- [ ] `B11` **Pausa do aluno** (férias, viagem, lesão): quantas por ano, por quanto tempo?
+- [ ] **Modo ausência do coach**: quando ele viaja ou adoece, suspende o prazo de resposta e
+      pausa inscrições — ele concorda?
+
+- [ ] Confirmar que o **suporte técnico do app** é canal separado do "Fale com o Azambuja"
 
 ## Bloco 9 — Escopo do MVP *(10 min)*
 
@@ -150,10 +169,10 @@ Sugestão de condução: apresentar a minuta em 20 minutos, e usar o resto do te
 
 ## Saída esperada da reunião
 
-**As sete decisões do Bloco A, fechadas.** São elas que liberam o início do desenvolvimento:
+**As oito decisões do Bloco A, fechadas.** São elas que liberam o início do desenvolvimento:
 `A1` técnicas avançadas · `A2` como o treino é montado · `A3` titular e substitutos ·
 `A4` trava do contato prévio · `A5` prazos de revisão · `A6` CREF/CRN e prescrição alimentar ·
-`A7` escopo do MVP congelado.
+`A7` escopo do MVP congelado · `A8` migração dos alunos atuais.
 
 **Documentos que precisam sair da mesa preenchidos:**
 
