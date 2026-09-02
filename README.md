@@ -9,8 +9,10 @@ para os alunos + site institucional/captação + painel administrativo para o co
 
 ## Como trabalhamos
 
-[`CLAUDE.md`](CLAUDE.md) na raiz reúne as instruções de trabalho e é lido automaticamente
-no início de toda sessão neste repositório. É o arquivo a copiar para um projeto novo.
+[`CLAUDE.md`](CLAUDE.md) na raiz é lido automaticamente no início de toda sessão. Ele tem duas
+partes: o **bloco geral**, copiado de `danilodme-rgb/instrucoes` (as regras que valem em todos os
+projetos), e o **contexto do projeto**, que é só daqui. Regra geral nova entra em `instrucoes` e
+volta para cá por cópia — nunca se escreve direto aqui.
 
 ## Documentos
 
@@ -23,6 +25,7 @@ no início de toda sessão neste repositório. É o arquivo a copiar para um pro
 | [`Minuta-Azambuja-Team-OS.pdf`](Minuta-Azambuja-Team-OS.pdf) | **Versão para apresentação** — minuta + os três anexos, 53 páginas, com capa e sumário |
 
 Para regerar o PDF depois de editar os documentos: `python3 tools/build_pdf.py`
+(precisa de `pip install markdown` e de um Chromium instalado).
 
 ## Próximos passos
 
