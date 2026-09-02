@@ -1,6 +1,9 @@
-import re, markdown, subprocess, os, pathlib
+import re, markdown, subprocess, os, shutil, sys, pathlib
 
-DOCS = pathlib.Path('/home/user/Projeto-Azambuja-Team-OS/docs')
+# Caminhos derivados da localizacao do proprio arquivo: o gerador roda em
+# qualquer clone, nao so na maquina onde ele foi escrito (regra 13b).
+RAIZ = pathlib.Path(__file__).resolve().parent.parent
+DOCS = RAIZ / 'docs'
 fonts = open(pathlib.Path(__file__).parent / 'fonts-embed.css', encoding='utf-8').read()
 
 def render(path):
@@ -134,8 +137,25 @@ HTML = f"""<!doctype html><html lang="pt-BR"><head><meta charset="utf-8">
 
 open('/tmp/minuta-print.html', 'w', encoding='utf-8').write(HTML)
 
-CHROME = '/opt/pw-browsers/chromium-1194/chrome-linux/chrome'
-out = '/home/user/Projeto-Azambuja-Team-OS/Minuta-Azambuja-Team-OS.pdf'
+# Procura um Chromium; nao achando, para e diz o que falta -- nunca segue
+# calado deixando um PDF velho no lugar (regra 10b: falhar fechada).
+def achar_chrome():
+    if os.environ.get('CHROME'):
+        return os.environ['CHROME']
+    for nome in ('chromium', 'chromium-browser', 'google-chrome', 'google-chrome-stable'):
+        achado = shutil.which(nome)
+        if achado:
+            return achado
+    for padrao in ('/opt/pw-browsers/chromium-*/chrome-linux/chrome',
+                   '/opt/pw-browsers/chromium'):
+        for achado in sorted(pathlib.Path('/').glob(padrao.lstrip('/')), reverse=True):
+            if os.access(achado, os.X_OK):
+                return str(achado)
+    sys.exit('Nao achei o Chromium para gerar o PDF. Instale o Chrome ou o Chromium, '
+             'ou aponte a variavel CHROME para o executavel.')
+
+CHROME = achar_chrome()
+out = str(RAIZ / 'Minuta-Azambuja-Team-OS.pdf')
 r = subprocess.run([CHROME, '--headless', '--disable-gpu', '--no-sandbox',
     '--no-pdf-header-footer', '--print-to-pdf=' + out,
     'file://' + '/tmp/minuta-print.html'],
