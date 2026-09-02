@@ -1,0 +1,32 @@
+name: Conferência
+
+# Roda no PR, não só depois do merge: vermelho depois do merge é notícia, não
+# trava. Roda também no branch de trabalho, que aqui é o branch padrão.
+on:
+  pull_request:
+  push:
+    branches: [claude/nutrition-fitness-app-rpp1x8]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  conferir:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Baixar o repositório
+        uses: actions/checkout@v4
+
+      - name: Preparar o Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      # `pypdf` é o leitor de terceiro: quem confere o PDF não pode ser quem
+      # escreveu o PDF.
+      - name: Instalar as dependências
+        run: pip install markdown pypdf
+
+      - name: Conferir (com autoteste da própria conferência)
+        run: python3 tools/conferir.py --autoteste

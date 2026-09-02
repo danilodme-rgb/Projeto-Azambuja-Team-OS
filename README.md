@@ -27,6 +27,21 @@ volta para cá por cópia — nunca se escreve direto aqui.
 Para regerar o PDF depois de editar os documentos: `python3 tools/build_pdf.py`
 (precisa de `pip install markdown` e de um Chromium instalado).
 
+## Conferência
+
+Os documentos e o PDF são conferidos em todo pull request:
+
+```bash
+pip install markdown pypdf
+python3 tools/conferir.py
+```
+
+Ela reprova link interno para arquivo que não existe, lista de markdown sem linha em branco antes
+(o conversor de PDF cola a lista no parágrafo acima) e falha na geração do PDF — que ela roda de
+ponta a ponta, num destino descartável, e abre com o `pypdf`, um leitor que não é o gerador.
+`python3 tools/conferir.py --autoteste` roda a mesma conferência contra cópias sabotadas de
+propósito e exige que ela reprove cada uma.
+
 ## Próximos passos
 
 1. Revisar a minuta e ajustar o que for necessário.

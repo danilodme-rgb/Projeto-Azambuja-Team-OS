@@ -216,6 +216,34 @@ em concreto:
 - Habilitação profissional (CREF, CRN) é item obrigatório de checagem, não detalhe.
 - Todo texto jurídico sai com a ressalva de que precisa de revisão por advogado.
 
+## A conferência — o que existe e o que não existe
+
+Este projeto não tem teste nem build: o entregável é documentação e o PDF gerado dela. O que ele
+tem é o piso da seção 0 da skill `travas-e-baterias` (`.claude/skills/`), montado em 02/09/2026:
+
+```bash
+pip install markdown pypdf
+python3 tools/conferir.py              # a conferência
+python3 tools/conferir.py --autoteste  # + a prova de que ela reprova de verdade
+```
+
+Ela confere três coisas: todo link interno nos `.md` apontando para arquivo que existe; toda lista
+com linha em branco antes (a armadilha do conversor, aqui embaixo); e **o gerador rodando de ponta
+a ponta com o `pypdf` — leitor de terceiro — abrindo o resultado**, contando páginas e extraindo o
+texto da capa. É a regra 11c: quem confere o PDF não pode ser quem escreveu o PDF.
+
+Ela gera num destino descartável (`SAIDA=...`), então **não troca o PDF versionado** — esse só se
+regera quando o Danilo pede.
+
+Falha fechada: sem `markdown`, sem `pypdf` ou sem navegador ela bloqueia e diz o que falta.
+Categoria que não achou nada também reprova — resultado vazio não é prova de ausência.
+
+Ligada em `.github/workflows/conferir.yml`, em todo PR e em push no branch de trabalho. Copiar o
+arquivo não liga nada; quem liga é o registro.
+
+**Buraco declarado:** ela não lê o conteúdo. Número, preço, prazo e o que a minuta afirma
+continuam sendo leitura humana.
+
 ## Entregáveis
 
 | O quê | Onde | Quando |
@@ -244,11 +272,10 @@ em concreto:
   saída e para o Chromium; em qualquer outro clone ele morria com `FileNotFoundError`. Agora os
   caminhos saem da localização do próprio arquivo e o Chromium é procurado (variável `CHROME`,
   depois o `PATH`, depois os caminhos conhecidos). É a regra 13b: versionado vence local.
-- **Este projeto não tem teste nem build — e não tem conferência nenhuma no CI.** Buraco
-  declarado, não esquecido: o piso que falta está na seção 0 da skill `travas-e-baterias`
-  (`.claude/skills/`) — para projeto de documentação, "o gerador roda e um leitor de terceiro
-  abre o que ele gerou". Medido em 02/09/2026: o gerador corrigido produz 53 páginas e o
-  `pdfjs-dist` as lê. Falta amarrar isso num workflow.
+- **Duas definições do mesmo fato divergem na primeira mudança.** Por isso a busca pelo
+  navegador vive em `tools/build_pdf_navegador.py`, sozinha: o gerador e a conferência chamam a
+  mesma função. Módulo separado porque importar `build_pdf.py` gera o PDF inteiro, e quem só quer
+  saber se existe navegador não pode pagar isso.
 
 ## Fluxo que funcionou aqui (Fase 0)
 
