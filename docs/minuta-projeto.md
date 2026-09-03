@@ -1427,6 +1427,13 @@ inteiro; uma do Bloco C tomada tarde atrasa só o lançamento.
 Cada decisão traz a pergunta, as opções, a recomendação técnica e **o que muda se ela for
 alterada depois** — que é o custo real de adiar.
 
+> **Onde fica o quê.** Esta seção é dona do **conteúdo** de cada decisão. Quem guarda o
+> **estado** — aberta ou fechada — são as issues do repositório, uma por decisão, com o mesmo
+> código no título e etiqueta `bloco-A`, `bloco-B` ou `bloco-C`
+> ([ver as abertas](https://github.com/danilodme-rgb/Projeto-Azambuja-Team-OS/issues?q=is%3Aissue+is%3Aopen+label%3Adecis%C3%A3o)).
+> Elas apontam para cá e não copiam o texto, para não existirem duas verdades. Ao fechar uma
+> decisão: escrever a definição em 19.1, tirá-la do bloco e fechar a issue **no mesmo commit**.
+
 ---
 
 ### 19.1 Já decidido
