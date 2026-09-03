@@ -19,9 +19,11 @@ anexar (rede fora, acesso negado), tudo bem — a cópia abaixo é completa e va
 
 <!-- inicio-geral -->
 
-> **Bloco geral copiado de `instrucoes@9eeeac4`.** Não editar aqui: regra nova entra
+> **Bloco geral copiado de `instrucoes@87a1582`.** Não editar aqui: regra nova entra
 > primeiro em `danilodme-rgb/instrucoes` e volta para cá por cópia. Cópia diferente da
 > fonte, atualizo esta antes de trabalhar.
+
+
 
 
 
@@ -71,7 +73,9 @@ anexar (rede fora, acesso negado), tudo bem — a cópia abaixo é completa e va
 8d. **Passar não prova que detecta falha.** Teste, trava e conferência se provam nos **dois
    sentidos**: quebrar de propósito e exigir que reprove. O que passa tanto na versão certa
    quanto na com defeito não prova nada. Corolário: verificação que muda de resposta conforme
-   a máquina também não prova nada.
+   a máquina também não prova nada. **E prova que morre não reprova — ela some:** conferência
+   que estoura em vez de dizer "reprovei" não deixa o sinal que alguém procura, e passa por
+   cobertura.
 
 ## 3. Excelência no produto
 
